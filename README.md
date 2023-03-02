@@ -1,13 +1,15 @@
 # GameProgramming2 Final
- Game Programming 2 Final Template
 
-Game Name:  
-Description Short:  
-Description Long:
+Game Name:  Ecto
 
-Genre:
+Description Short:  Jump around floating islands, collect bizarre weapons, and fight off the destructive shadow government that wants to mine for rare crystals.
 
-Platform:
+Description Long:  Ever walk around the woods, wielding a cool stick you found on the forest floor?  Now what if you were a wizard?.. on a floating island? FIGHTING THE SHADOW GOVERNMENT??    Travel across randomly generated floating worlds, exploring and finding bizarre, stick-gun style weapons, powered by crystals, flowers and mushrooms!
+
+
+Genre:  FPS, Adventure, Rouguelike
+
+Platform:  PC
 
 Folder Sturcture
 
