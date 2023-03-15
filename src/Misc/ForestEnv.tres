@@ -1,0 +1,22 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://ddk4bpicf51eg"]
+
+[ext_resource type="Texture2D" uid="uid://ds3iok27vutv8" path="res://Textures/Skybox/Skybox_NASA_Stars_02.png" id="1_r5wai"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_1vbaj"]
+panorama = ExtResource("1_r5wai")
+
+[sub_resource type="Sky" id="Sky_o82kv"]
+sky_material = SubResource("PanoramaSkyMaterial_1vbaj")
+
+[resource]
+background_mode = 2
+background_color = Color(0.552941, 0.847059, 0.945098, 1)
+sky = SubResource("Sky_o82kv")
+ambient_light_source = 2
+ambient_light_color = Color(0.411765, 0.560784, 0.588235, 1)
+glow_enabled = true
+glow_intensity = 2.6
+glow_strength = 1.06
+glow_blend_mode = 1
+glow_hdr_threshold = 1.69
+adjustment_brightness = 1.13

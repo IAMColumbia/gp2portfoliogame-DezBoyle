@@ -1,0 +1,81 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://3aknufpor1x4"
+path="res://.godot/imported/Player_Wizard_01.blend-4842bc194ba9968e627f96f82294cb1b.scn"
+
+[deps]
+
+source_file="res://Models/Player_Wizard_01.blend"
+dest_files=["res://.godot/imported/Player_Wizard_01.blend-4842bc194ba9968e627f96f82294cb1b.scn"]
+
+[params]
+
+nodes/root_type="Node3D"
+nodes/root_name="Scene Root"
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+import_script/path=""
+_subresources={
+"materials": {
+"Wizard": {
+"use_external/enabled": true,
+"use_external/path": "res://Materials/Player_Wizard_01.tres"
+},
+"Wizard.001": {
+"use_external/enabled": true,
+"use_external/path": "res://Materials/Player_Wizard_01.tres"
+},
+"Wizard.002": {
+"use_external/enabled": true,
+"use_external/path": "res://Materials/Player_Wizard_01.tres"
+},
+"Wizard.003": {
+"use_external/enabled": true,
+"use_external/path": "res://Materials/Player_Wizard_01.tres"
+},
+"Wizard.004": {
+"use_external/enabled": true,
+"use_external/path": "res://Materials/Player_Wizard_01.tres"
+},
+"Wizard.005": {
+"use_external/enabled": true,
+"use_external/path": "res://Materials/Player_Wizard_01.tres"
+},
+"Wizard.006": {
+"use_external/enabled": true,
+"use_external/path": "res://Materials/Player_Wizard_01.tres"
+},
+"Wizard.007": {
+"use_external/enabled": true,
+"use_external/path": "res://Materials/Player_Wizard_01.tres"
+}
+}
+}
+blender/nodes/visible=0
+blender/nodes/punctual_lights=true
+blender/nodes/cameras=true
+blender/nodes/custom_properties=true
+blender/nodes/modifiers=1
+blender/meshes/colors=false
+blender/meshes/uvs=true
+blender/meshes/normals=true
+blender/meshes/tangents=true
+blender/meshes/skins=2
+blender/meshes/export_bones_deforming_mesh_only=false
+blender/materials/unpack_enabled=true
+blender/materials/export_materials=1
+blender/animation/limit_playback=true
+blender/animation/always_sample=true
+blender/animation/group_tracks=true

@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://x41fsxc2whim"]
+
+[ext_resource type="Texture2D" uid="uid://b8856t3b1p5tw" path="res://Textures/Mushroom_ChickenOfTheWoods_01.png" id="1_5ljrw"]
+
+[resource]
+albedo_texture = ExtResource("1_5ljrw")
+texture_filter = 5

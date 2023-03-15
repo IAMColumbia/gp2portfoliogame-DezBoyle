@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://ca8i4iunrayk7"]
+
+[ext_resource type="Script" path="res://Scripts/Player.cs" id="1_yi3jq"]
+[ext_resource type="PackedScene" uid="uid://3aknufpor1x4" path="res://Models/Player_Wizard_01.blend" id="2_4aba1"]
+[ext_resource type="Environment" uid="uid://ddk4bpicf51eg" path="res://Misc/ForestEnv.tres" id="2_dnpit"]
+[ext_resource type="Script" path="res://Scripts/PlayerDebug.cs" id="3_d2i26"]
+[ext_resource type="Script" path="res://Scripts/PlayerInteraction.cs" id="6_q2d5w"]
+[ext_resource type="Script" path="res://Scripts/NetworkPlayer.cs" id="7_u3xl0"]
+[ext_resource type="Script" path="res://Scripts/PlayerInventory.cs" id="9_x0s3g"]
+[ext_resource type="AudioStream" uid="uid://c23dl0e6iwwgl" path="res://Audio/SFX/fart.wav" id="10_pnwjs"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jgr3m"]
+friction = 0.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_awoiw"]
+height = 1.5
+
+[node name="Player" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, -0.00082719, 1.82929, 0.00166833)
+collision_layer = 2
+collision_mask = 3
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+physics_material_override = SubResource("PhysicsMaterial_jgr3m")
+gravity_scale = 0.0
+continuous_cd = true
+can_sleep = false
+lock_rotation = true
+script = ExtResource("1_yi3jq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, -2.40732e-10, 0, 1.02887e-11, 1, 0, 0, -4.65661e-10, 1, 0, 0.25, 0)
+shape = SubResource("CapsuleShape3D_awoiw")
+
+[node name="PlayerBody" type="Node3D" parent="."]
+
+[node name="Player_Wizard_01" parent="PlayerBody" instance=ExtResource("2_4aba1")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, -0.898409, 0)
+
+[node name="Camera" type="Camera3D" parent="PlayerBody"]
+transform = Transform3D(-1, 0, -8.74227e-08, 0, 1, 0, 8.74227e-08, 0, -1, -1.16415e-10, 0.435029, 0)
+cull_mask = 1048559
+environment = ExtResource("2_dnpit")
+fov = 80.0
+
+[node name="DroppedItemPosition" type="Node3D" parent="PlayerBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.681761, 1.06532)
+
+[node name="PlayerInteraction" type="Node3D" parent="."]
+script = ExtResource("6_q2d5w")
+interactRaycastDistance = 3.0
+
+[node name="NetworkPlayer" type="Node" parent="."]
+script = ExtResource("7_u3xl0")
+
+[node name="PlayerInventory" type="Node" parent="."]
+script = ExtResource("9_x0s3g")
+
+[node name="DebugText" type="Label" parent="."]
+offset_right = 277.0
+offset_bottom = 235.0
+theme_override_font_sizes/font_size = 12
+script = ExtResource("3_d2i26")
+
+[node name="NameLabel" type="Label3D" parent="."]
+transform = Transform3D(1, -1.24146e-10, 0, 1.02887e-11, 1, 0, 0, -2.32831e-10, 1, -0.00366425, 1.31823, -1.16415e-10)
+billboard = 1
+text = "NAME"
+
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("10_pnwjs")
+volume_db = -7.68

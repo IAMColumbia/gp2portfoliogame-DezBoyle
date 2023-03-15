@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqr116l2utv54"]
+
+[ext_resource type="PackedScene" uid="uid://cnnrq2ev7cr7o" path="res://Models/Log_Y_01.blend" id="1_atn3s"]
+[ext_resource type="Material" uid="uid://c5kyqqac7a6hi" path="res://Materials/bark_03.tres" id="2_lw7i5"]
+
+[node name="Log_Y_01_" instance=ExtResource("1_atn3s")]
+
+[node name="Log_Y_01" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_lw7i5")

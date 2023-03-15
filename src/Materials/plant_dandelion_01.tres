@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cuvl8rckma7du"]
+
+[ext_resource type="Texture2D" uid="uid://f0vh3jlv6jar" path="res://Textures/Plant_Dandelion_01.png" id="1_ld16g"]
+
+[resource]
+albedo_texture = ExtResource("1_ld16g")
+texture_filter = 5

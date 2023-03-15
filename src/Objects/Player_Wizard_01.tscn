@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsoutnoacv125"]
+
+[ext_resource type="PackedScene" uid="uid://3aknufpor1x4" path="res://Models/Player_Wizard_01.blend" id="1_cg422"]
+
+[node name="Player_Wizard_01_" instance=ExtResource("1_cg422")]
+
+[node name="Eye_L" parent="Body/Head" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.432429, 1.12497, 1.12333)

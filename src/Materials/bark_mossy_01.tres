@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bhnuidqidci13"]
+
+[ext_resource type="Texture2D" uid="uid://4d483m1tsrjb" path="res://Textures/Bark_Mossy_01.png" id="1_p66xc"]
+
+[resource]
+albedo_texture = ExtResource("1_p66xc")
+texture_filter = 5

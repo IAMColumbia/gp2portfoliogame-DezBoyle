@@ -1,0 +1,109 @@
+[gd_scene load_steps=11 format=3 uid="uid://b73ymovu8yh01"]
+
+[ext_resource type="Script" path="res://Scripts/EnemyMissle.cs" id="1_6vhvh"]
+[ext_resource type="PackedScene" uid="uid://bl178cafwmnqf" path="res://Models/Enemy_Missile_01.blend" id="1_iegho"]
+[ext_resource type="Material" uid="uid://ojghkmkh0p73" path="res://Materials/DamageFlashMaterial.tres" id="3_uut8s"]
+[ext_resource type="Material" uid="uid://bet13eyiaf4sd" path="res://Materials/RedGlow.tres" id="3_w2edi"]
+[ext_resource type="Script" path="res://Scripts/PlayAnimation.cs" id="4_ojup6"]
+[ext_resource type="Script" path="res://Scripts/DamageFlash.cs" id="5_sihj8"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qxajb"]
+
+[sub_resource type="Animation" id="Animation_j8er6"]
+resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Enemy_Missile_01")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.5, 1, 0, 0, 0.165151, 0.986268, 1, 1, 0, 0, 0, 1, 1.5, 1, 0, 0, -0.173648, 0.984808, 2, 1, 0, 0, 0, 1)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Enemy_Missile_01/Enemy_Missle_01:surface_material_override/1:emission")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.988235, 0, 0, 1), Color(0, 0, 0, 1), Color(0.988235, 0, 0, 1), Color(0, 0, 0, 1), Color(0.988235, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Enemy_Missile_01/Enemy_Missle_01:surface_material_override/1:albedo_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.960784, 0, 0, 1), Color(0, 0, 0, 1), Color(0.960784, 0, 0, 1), Color(0, 0, 0, 1), Color(0.960784, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_msywr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Enemy_Missile_01/Enemy_Missle_01:surface_material_override/1:emission")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.988235, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Enemy_Missile_01/Enemy_Missle_01:surface_material_override/1:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.960784, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nayju"]
+_data = {
+"Idle": SubResource("Animation_j8er6"),
+"RESET": SubResource("Animation_msywr")
+}
+
+[node name="EnemyMissle" type="Node3D"]
+script = ExtResource("1_6vhvh")
+damage = 30
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0.80345)
+shape = SubResource("CapsuleShape3D_qxajb")
+
+[node name="Enemy_Missile_01" parent="." instance=ExtResource("1_iegho")]
+transform = Transform3D(0.995878, 0.0907064, 0, -0.0907064, 0.995878, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Enemy_Missle_01" parent="Enemy_Missile_01" index="0"]
+surface_material_override/1 = ExtResource("3_w2edi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nayju")
+}
+script = ExtResource("4_ojup6")
+animationName = "Idle"
+
+[node name="DamageFlash" type="Node" parent="."]
+script = ExtResource("5_sihj8")
+flashMaterial = ExtResource("3_uut8s")
+
+[editable path="Enemy_Missile_01"]

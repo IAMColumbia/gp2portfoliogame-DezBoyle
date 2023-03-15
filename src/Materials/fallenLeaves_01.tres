@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cktvtroula1fs"]
+
+[ext_resource type="Texture2D" uid="uid://dmyuhwh2i6lhe" path="res://Textures/fallenLeaves_01_reducedContrast.png" id="1_fjoma"]
+
+[resource]
+diffuse_mode = 1
+specular_mode = 1
+albedo_texture = ExtResource("1_fjoma")
+metallic_specular = 0.0
+anisotropy = 0.75
+texture_filter = 5

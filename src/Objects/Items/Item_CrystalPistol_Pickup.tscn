@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cygc13xg1756u"]
+
+[ext_resource type="PackedScene" uid="uid://cpyx3w2y8f7wm" path="res://Models/Weapon_CrystalPistol_01.blend" id="3_guok5"]
+[ext_resource type="Script" path="res://Scripts/InteractablePickup.cs" id="3_ygr3e"]
+[ext_resource type="Script" path="res://Scripts/NetworkObject.cs" id="4_i0n0f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mj5ed"]
+size = Vector3(0.452815, 0.420592, 0.952515)
+
+[node name="Item_CrystalPistol_Pickup_" type="Area3D" node_paths=PackedStringArray("GrabPosition")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+script = ExtResource("3_ygr3e")
+GrabPosition = NodePath("GrabPosition")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.186745, 0.0184236)
+shape = SubResource("BoxShape3D_mj5ed")
+
+[node name="GrabPosition" type="Node3D" parent="."]
+transform = Transform3D(-0.904789, 0.231068, -0.35772, 0.211342, 0.972892, 0.0938845, 0.369717, 0.00934455, -0.929097, 0, 0.133315, 0.312566)
+
+[node name="NetworkObject" type="Node" parent="."]
+script = ExtResource("4_i0n0f")
+
+[node name="Weapon_CrystalPistol_01" parent="." instance=ExtResource("3_guok5")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.205433, 0.434231)

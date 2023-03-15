@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7w24xi1d0b0j"]
+
+[ext_resource type="PackedScene" uid="uid://4w7ymms7tw4f" path="res://Models/Plant_Geranium_01.blend" id="1_7jnkn"]
+[ext_resource type="PackedScene" uid="uid://dy5rabf6jiqby" path="res://Objects/Plant_Geranium_01_Item.tscn" id="2_elnyn"]
+
+[node name="Plant_Geranium_01_" instance=ExtResource("1_7jnkn")]
+
+[node name="Plant_Geranium_01_Item_" parent="." index="0" instance=ExtResource("2_elnyn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00688074, 0.871732, -0.00298077)
+
+[node name="Plant_Geranium_01_Top" parent="." index="1"]
+visible = false

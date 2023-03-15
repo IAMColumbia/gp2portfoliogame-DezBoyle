@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://dychhd0w5efvh"]
+
+[ext_resource type="PackedScene" uid="uid://ck7jprfswa4id" path="res://Models/Plant_VirginiaCreeper_01.blend" id="1_kj5sv"]
+
+[node name="Plant_VirginiaCreeper_01_" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.43099, -0.398267, 1.11539)
+
+[node name="Plant_VirginiaCreeper_01" parent="." instance=ExtResource("1_kj5sv")]
+transform = Transform3D(0.99656, 0.0828778, 0, -0.0828778, 0.99656, 0, 0, 0, 1, -0.349863, 0.041971, 0.200265)
+
+[node name="Plant_VirginiaCreeper_02" parent="." instance=ExtResource("1_kj5sv")]
+transform = Transform3D(0.554194, 0.0828778, 0.828251, -0.0460889, 0.99656, -0.0688806, -0.831111, 0, 0.556107, 0.611564, -0.0379849, 0.740501)
+
+[node name="Plant_VirginiaCreeper_03" parent="." instance=ExtResource("1_kj5sv")]
+transform = Transform3D(0.559196, 0.0174594, 0.828852, 0.165447, 0.977317, -0.132207, -0.812359, 0.211061, 0.543623, 0.565344, 0.0216124, -0.156308)
+
+[node name="Plant_VirginiaCreeper_04" parent="." instance=ExtResource("1_kj5sv")]
+transform = Transform3D(0.830551, -0.00237261, -0.556938, -0.0632314, 0.993124, -0.0985265, 0.553342, 0.117047, 0.82469, -0.209533, 0.122638, -0.784255)

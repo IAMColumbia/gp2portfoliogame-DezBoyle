@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvneog3y33k3f"]
+
+[ext_resource type="PackedScene" uid="uid://bd3yyr11l818i" path="res://Models/Log_Multi_01.blend" id="1_lcxpg"]
+[ext_resource type="Material" uid="uid://b15agh2ege0t1" path="res://Materials/bark_bare_mossy_01.tres" id="2_qmddc"]
+[ext_resource type="Material" uid="uid://bydevefnqr8wj" path="res://Materials/stump_01.tres" id="3_edswj"]
+
+[node name="Log_Multi_01_" instance=ExtResource("1_lcxpg")]
+
+[node name="Log_Multi_01" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_qmddc")
+surface_material_override/1 = ExtResource("3_edswj")

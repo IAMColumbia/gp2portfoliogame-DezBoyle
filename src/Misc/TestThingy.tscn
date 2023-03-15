@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://fsjrgmro4id8"]
+
+[ext_resource type="Script" path="res://Scripts/NetworkObject.cs" id="1_5kkia"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_klq2v"]
+
+[node name="TestThingy" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.957261, 0)
+freeze = true
+
+[node name="TestThingyMesh" type="CSGBox3D" parent="."]
+use_collision = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_klq2v")
+
+[node name="NetworkObject" type="Node" parent="."]
+script = ExtResource("1_5kkia")

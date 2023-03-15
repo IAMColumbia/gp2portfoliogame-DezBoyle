@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dcmi462uwgw4c"]
+
+[ext_resource type="Texture2D" uid="uid://cmfg8hfsqjupa" path="res://Textures/Plant_VirginiaCreeper_01.png" id="1_t2c3t"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_color = Color(0.8, 0.8, 0.8, 1)
+albedo_texture = ExtResource("1_t2c3t")
+texture_filter = 5
