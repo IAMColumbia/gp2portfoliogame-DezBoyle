@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://0fcgs7f0s3ik"]
+
+[ext_resource type="PackedScene" uid="uid://fpftn4pq6mjc" path="res://Models/Island_S_01.blend" id="1_ate80"]
+
+[node name="Island_S_01_" instance=ExtResource("1_ate80")]

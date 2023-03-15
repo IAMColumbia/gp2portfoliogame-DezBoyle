@@ -1,0 +1,84 @@
+[gd_scene load_steps=9 format=3 uid="uid://bvfym4w7ux11g"]
+
+[ext_resource type="Environment" uid="uid://ddk4bpicf51eg" path="res://Misc/ForestEnv.tres" id="1_guisi"]
+[ext_resource type="Script" path="res://Scripts/LevelManager.cs" id="1_yq178"]
+[ext_resource type="Material" uid="uid://d0etmjlaqhd7f" path="res://Misc/Green.tres" id="2_j64u6"]
+[ext_resource type="PackedScene" uid="uid://f58xlraannvu" path="res://Models/Stump_01.blend" id="3_qhxtk"]
+[ext_resource type="PackedScene" uid="uid://lmsn6e4tuu2y" path="res://Models/Log_01.blend" id="4_r88do"]
+[ext_resource type="Material" uid="uid://vyvs5fwrh2u0" path="res://Materials/bark_01.tres" id="5_nie4y"]
+[ext_resource type="PackedScene" uid="uid://bobhyqld56irf" path="res://Models/Old/Tree_01.blend" id="6_p0l20"]
+[ext_resource type="PackedScene" uid="uid://bv7fpii77dyh" path="res://Models/Tree_M_01.blend" id="7_rsenr"]
+
+[node name="Level" type="Node"]
+script = ExtResource("1_yq178")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_guisi")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.516264, 0.856429, 0, -0.856429, 0.516264, 0, -3.80074, 0)
+light_color = Color(0.913725, 0.913725, 0.756863, 1)
+light_energy = 1.397
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1.00992, 0, 0, 0, 1.00992, 0, 0, 0, 1.00992, 0, -3.80074, 0)
+material_override = ExtResource("2_j64u6")
+use_collision = true
+size = Vector3(20, 1, 100)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(0.964525, 0, 0.0879137, 0, 4.16032, 0, -0.299382, 0, 0.283233, 1.71943, -3.50762, 21.7237)
+material_override = ExtResource("2_j64u6")
+use_collision = true
+size = Vector3(20, 1, 67.1315)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(0.262108, 0, 0.0695722, 0, 4.16032, 0, -0.0813565, 0, 0.224142, 1.71943, -1.25772, 21.7237)
+material_override = ExtResource("2_j64u6")
+use_collision = true
+size = Vector3(20, 1, 67.1315)
+
+[node name="PlayerSpawn" type="Node3D" parent="."]
+transform = Transform3D(1, -0.000452191, -0.000736614, 0.000451531, 0.999999, -0.000912336, 0.000737018, 0.000912009, 0.999999, -0.00082719, -1.97145, 0.00166833)
+
+[node name="Stump_01" parent="." instance=ExtResource("3_qhxtk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.15805, -3.29578, -2.24874)
+
+[node name="Log_01" parent="." instance=ExtResource("4_r88do")]
+transform = Transform3D(0.192321, -0.122069, 0.97371, 0.535886, 0.84429, -3.18401e-07, -0.822094, 0.521798, 0.22779, -1.46098, -1.10334, -8.49231)
+
+[node name="Stump_02" parent="." instance=ExtResource("3_qhxtk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.71013, -3.38546, -11.5338)
+
+[node name="Stump_04" parent="." instance=ExtResource("3_qhxtk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.24331, -3.38546, -15.2554)
+
+[node name="Stump_05" parent="." instance=ExtResource("3_qhxtk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.77663, -3.38546, -18.727)
+
+[node name="Stump_06" parent="." instance=ExtResource("3_qhxtk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.89552, -3.38546, -22.111)
+
+[node name="Stump_07" parent="." instance=ExtResource("3_qhxtk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.29629, -3.38546, -26.0233)
+
+[node name="Log_03" parent="." instance=ExtResource("4_r88do")]
+transform = Transform3D(0.766971, -0.486462, -0.418461, 0.535536, 0.844512, -0.000196358, 0.353491, -0.223951, 0.908235, 3.77091, -1.10334, -1.79951)
+
+[node name="Stump_03" parent="." instance=ExtResource("3_qhxtk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.48067, -3.47515, -17.5099)
+
+[node name="Log_02" parent="." instance=ExtResource("4_r88do")]
+transform = Transform3D(-0.909107, -0.145649, 0.390271, -0.0958948, 0.984894, 0.144183, -0.405375, 0.0936533, -0.90934, 3.2417, -1.42398, -23.2929)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0566, -0.521516, -5.34276)
+material_override = ExtResource("5_nie4y")
+use_collision = true
+size = Vector3(1, 5.63795, 7.45773)
+
+[node name="Tree_01" parent="." instance=ExtResource("6_p0l20")]
+transform = Transform3D(0.829584, -0.019386, 0.558046, -0.553269, 0.10641, 0.826179, -0.0753981, -0.994133, 0.0775505, 6.79997, -2.9895, -11.5846)
+
+[node name="Tree_M_01" parent="." instance=ExtResource("7_rsenr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.11797, -3.29578, -20.1815)

@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://tljbn0vsr6bx"]
+
+[ext_resource type="Texture2D" uid="uid://e63o81ie8pw0" path="res://Textures/Plant_Geranium_01.png" id="1_0r584"]
+
+[resource]
+cull_mode = 2
+albedo_texture = ExtResource("1_0r584")
+texture_filter = 5

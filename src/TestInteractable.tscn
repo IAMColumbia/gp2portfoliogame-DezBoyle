@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwijvualojohh"]
+
+[ext_resource type="Script" path="res://Scripts/TestInteractable.cs" id="1_rmj2v"]
+[ext_resource type="Material" uid="uid://dga2ys26fxmvr" path="res://Materials/bark_02.tres" id="2_73xvb"]
+[ext_resource type="Material" uid="uid://bknohmtnn3l4a" path="res://Materials/bark_mossy_02.tres" id="3_d4o60"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q1kwv"]
+size = Vector3(1.48911, 1, 1.42515)
+
+[node name="TestInteractable" type="Area3D" node_paths=PackedStringArray("thingy", "GrabPosition")]
+transform = Transform3D(0.708254, 0, 0.705958, 0, 1, 0, -0.705958, 0, 0.708254, -6.95281, -0.329312, -8.95675)
+script = ExtResource("1_rmj2v")
+thingy = NodePath("Grab")
+GrabPosition = NodePath("Grab")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1.42267, 0, 0, 0, 0.0572967, 0, 0, 0, 1.26872, 0, 0, 0)
+material_override = ExtResource("2_73xvb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_q1kwv")
+
+[node name="Grab" type="CSGBox3D" parent="."]
+transform = Transform3D(0.155944, 0, 0, 0, 0.155944, 0, 0, 0, 0.155944, 0, 0.118523, 0)
+material_override = ExtResource("3_d4o60")

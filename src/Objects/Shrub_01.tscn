@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhdotdbvko7yp"]
+
+[ext_resource type="PackedScene" uid="uid://bpf1iy6cuix31" path="res://Models/Shrub_01.blend" id="1_cgfr5"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gevdw"]
+height = 3.06937
+radius = 0.253214
+
+[node name="Shrub_01_" instance=ExtResource("1_cgfr5")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0150089, 1.52826, 0)
+shape = SubResource("CylinderShape3D_gevdw")

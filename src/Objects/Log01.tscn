@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwul07w1yxfkv"]
+
+[ext_resource type="PackedScene" uid="uid://lmsn6e4tuu2y" path="res://Models/Log_01.blend" id="1_kw44x"]
+[ext_resource type="Material" uid="uid://b15agh2ege0t1" path="res://Materials/bark_bare_mossy_01.tres" id="3_pcmn0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l8ap2"]
+size = Vector3(10.771, 1, 1)
+
+[node name="Log_01_" instance=ExtResource("1_kw44x")]
+
+[node name="Log" parent="." index="0"]
+surface_material_override/1 = ExtResource("3_pcmn0")
+
+[node name="CollisionShape3D" parent="Log/StaticBody3D" index="0"]
+transform = Transform3D(0.999335, 0.000726867, -0.0364472, -0.000773606, 0.999999, -0.00126831, 0.0364463, 0.00129566, 0.999335, 0.491832, -0.026575, 0.00295351)
+shape = SubResource("BoxShape3D_l8ap2")

@@ -1,0 +1,170 @@
+[gd_scene load_steps=13 format=3 uid="uid://bv7w4jbm1eje"]
+
+[ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_5ub74"]
+[ext_resource type="PackedScene" uid="uid://cxvcbdbi5lojm" path="res://Scenes/RandomTestScene.tscn" id="2_ngonf"]
+[ext_resource type="PackedScene" uid="uid://ca8i4iunrayk7" path="res://Objects/Player.tscn" id="3_xpxul"]
+[ext_resource type="Script" path="res://Scripts/Steam/SteamManager.cs" id="4_26fpt"]
+[ext_resource type="Script" path="res://Scripts/UI.cs" id="5_j8thm"]
+[ext_resource type="Texture2D" uid="uid://bnefqvwod5ipt" path="res://Textures/crosshair_normal.png" id="8_bho1x"]
+[ext_resource type="Texture2D" uid="uid://ddrp37m1klw50" path="res://Textures/crosshair_interact.png" id="8_cuw4b"]
+[ext_resource type="PackedScene" uid="uid://cp2qy87xxpv3e" path="res://Objects/UI/FriendLobbyUIElement.tscn" id="8_o4hel"]
+[ext_resource type="Script" path="res://Scripts/AudioManager.cs" id="9_3b33e"]
+[ext_resource type="AudioStream" uid="uid://blhk6g6jx8skl" path="res://Audio/Music/flying through the trees.ogg" id="10_gu06n"]
+[ext_resource type="Texture2D" uid="uid://df1h0l61pwush" path="res://Textures/crosshair_hitmarker.png" id="10_jvxci"]
+[ext_resource type="Texture2D" uid="uid://ievdkikj0vxf" path="res://Textures/Conciousness.png" id="10_oj5tt"]
+
+[node name="MainScene" type="Node3D"]
+script = ExtResource("1_5ub74")
+singleplayer = true
+allowCheats = true
+levelScene = ExtResource("2_ngonf")
+playerScene = ExtResource("3_xpxul")
+
+[node name="SteamManager" type="Node" parent="."]
+script = ExtResource("4_26fpt")
+
+[node name="UI" type="Node" parent="."]
+script = ExtResource("5_j8thm")
+crosshairTex_Normal = ExtResource("8_bho1x")
+crosshairTex_Interact = ExtResource("8_cuw4b")
+friendLobbyUIElementScene = ExtResource("8_o4hel")
+
+[node name="TitleScreen" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Friends" type="Control" parent="UI/TitleScreen"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -227.0
+offset_top = 14.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Background" type="Panel" parent="UI/TitleScreen/Friends"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI/TitleScreen/Friends/Background"]
+layout_mode = 0
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 12.0
+offset_right = -8.0
+offset_bottom = 57.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 36
+text = "Join Friends"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FriendsLobbyList" type="VBoxContainer" parent="UI/TitleScreen/Friends"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 90.0
+offset_right = -10.0
+offset_bottom = -47.0
+
+[node name="MenuButtons" type="Control" parent="UI/TitleScreen"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -152.0
+offset_top = -402.0
+offset_right = 153.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/TitleScreen/MenuButtons"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartGameButton" type="Button" parent="UI/TitleScreen/MenuButtons/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Start Game"
+icon_alignment = 1
+
+[node name="SingleplayerButton" type="Button" parent="UI/TitleScreen/MenuButtons/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Singleplayer"
+icon_alignment = 1
+
+[node name="CrosshairOld" type="TextureRect" parent="UI"]
+visible = false
+modulate = Color(1, 1, 1, 0.615686)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_bho1x")
+expand_mode = 1
+
+[node name="HitMarker" type="TextureRect" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_jvxci")
+expand_mode = 1
+
+[node name="Crosshair" type="TextureRect" parent="UI"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("8_bho1x")
+
+[node name="HealthIndicator" type="TextureRect" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_oj5tt")
+expand_mode = 1
+
+[node name="Audio" type="Node" parent="."]
+script = ExtResource("9_3b33e")
+disableMusic = true
+music = ExtResource("10_gu06n")
+
+[node name="RichTextLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 12
+text = "Ecto Prototype 1.0"
+
+[connection signal="button_down" from="UI/TitleScreen/MenuButtons/VBoxContainer/StartGameButton" to="UI" method="_on_start_game_button_button_down"]
+[connection signal="button_down" from="UI/TitleScreen/MenuButtons/VBoxContainer/SingleplayerButton" to="UI" method="_on_singleplayer_button_button_down"]

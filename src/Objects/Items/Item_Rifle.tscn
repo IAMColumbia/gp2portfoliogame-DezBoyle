@@ -1,0 +1,84 @@
+[gd_scene load_steps=13 format=3 uid="uid://671k2n36ga2q"]
+
+[ext_resource type="Script" path="res://Scripts/Weapon.cs" id="1_7opf2"]
+[ext_resource type="AudioStream" uid="uid://doqg11c8imit8" path="res://Audio/SFX/LaserCyclone.ogg" id="2_s5vyx"]
+[ext_resource type="Script" path="res://Scripts/TracerSpawner.cs" id="3_opy1a"]
+[ext_resource type="PackedScene" uid="uid://bhcttyncri308" path="res://Models/Projectile_Laser_01.blend" id="4_i7q6v"]
+[ext_resource type="Script" path="res://Scripts/Tracer.cs" id="5_v52ht"]
+[ext_resource type="PackedScene" uid="uid://md13hrquudbi" path="res://Models/Weapon_Rifle_01.blend" id="6_feh7r"]
+[ext_resource type="Script" path="res://Scripts/NetworkObject.cs" id="7_f28u8"]
+[ext_resource type="Script" path="res://Scripts/AudioPlayer.cs" id="8_vi3q0"]
+[ext_resource type="PackedScene" uid="uid://d0mdw66j0jt62" path="res://Models/MuzzleFlare_01.blend" id="9_n5a2r"]
+[ext_resource type="Script" path="res://Scripts/MuzzleFlare.cs" id="10_722sy"]
+
+[sub_resource type="Animation" id="Animation_hst6s"]
+resource_name = "Rifle_Shoot"
+length = 0.35
+step = 0.01
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Weapon_Rifle_01")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.22, -0.18, -0.349, 0.01, 1, 0.22, -0.179804, -0.295295, 0.09, 1, 0.22, -0.179804, -0.327944, 0.15, 1, 0.22, -0.178528, -0.335956, 0.35, 1, 0.22, -0.18, -0.349)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Weapon_Rifle_01")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.03, 1, -0.00293489, 0, 0, 0.999996, 0.15, 1, -0.0220099, 0, 0, 0.999758, 0.35, 1, 0, 0, 0, 1)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x20er"]
+_data = {
+"Rifle_Shoot": SubResource("Animation_hst6s")
+}
+
+[node name="Item_Rifle_01" type="Node3D" node_paths=PackedStringArray("audio")]
+script = ExtResource("1_7opf2")
+Cooldown = 0.18
+Automatic = true
+Spread = 3.0
+audio = NodePath("AudioPlayer")
+shootSound = ExtResource("2_s5vyx")
+shootAnimation = "Rifle_Shoot"
+pickupScenePath = "res://Objects/Items/Item_Rifle_Pickup.tscn"
+
+[node name="TracerSpawner" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.223576, -0.18712, -1.11943)
+script = ExtResource("3_opy1a")
+
+[node name="Tracer" parent="TracerSpawner" instance=ExtResource("4_i7q6v")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+script = ExtResource("5_v52ht")
+
+[node name="Projectile_Laser_01" parent="TracerSpawner/Tracer" index="0"]
+transform = Transform3D(0.514692, 0, 0, 0, 0.514692, 0, 0, 0, 0.514692, 0, 0, 0)
+cast_shadow = 0
+
+[node name="Weapon_Rifle_01" parent="." instance=ExtResource("6_feh7r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22, -0.18, -0.349)
+
+[node name="NetworkObject" type="Node" parent="."]
+script = ExtResource("7_f28u8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_x20er")
+}
+
+[node name="AudioPlayer" type="Node3D" parent="."]
+script = ExtResource("8_vi3q0")
+
+[node name="MuzzleFlare" parent="." instance=ExtResource("9_n5a2r")]
+transform = Transform3D(0.117516, 0, 0, 0, 0.117516, 0, 0, 0, 0.117516, 0.221101, -0.179998, -1.09132)
+script = ExtResource("10_722sy")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="MuzzleFlare"]
+light_color = Color(0.509804, 0.737255, 0.811765, 1)
+light_energy = 0.25
+light_bake_mode = 0
+omni_range = 3.0
+
+[editable path="TracerSpawner/Tracer"]

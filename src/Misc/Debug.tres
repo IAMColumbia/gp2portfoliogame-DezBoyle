@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://5w3kkwscchgm"]
+
+[resource]
+cull_mode = 2
+no_depth_test = true
+emission_enabled = true

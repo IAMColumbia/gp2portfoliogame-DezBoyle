@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3fv748bkm4g2"]
+
+[ext_resource type="PackedScene" uid="uid://dvm0aolo5s5ag" path="res://Models/Mushroom_ChickenOfTheWoods_01.blend" id="1_x8m1b"]
+[ext_resource type="Script" path="res://Scripts/StaticItem.cs" id="2_s5623"]
+[ext_resource type="Texture2D" uid="uid://dfv7xgwuv4cpr" path="res://icon.svg" id="3_qleqc"]
+[ext_resource type="Script" path="res://Scripts/InteractablePickup.cs" id="4_lsxfn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fnjsp"]
+size = Vector3(0.264063, 0.0887305, 0.426783)
+
+[node name="Mushroom_COTW_01_Item_" instance=ExtResource("1_x8m1b")]
+script = ExtResource("2_s5623")
+yOffset = 0.08
+IconTexture = ExtResource("3_qleqc")
+ItemName = "ChickenOfTheWoods"
+InteractablePickupPath = NodePath("InteractablePickup")
+TargetRotation = Vector3(0, 120, 15)
+
+[node name="InteractablePickup" type="Area3D" parent="." index="1" node_paths=PackedStringArray("GrabPosition")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("4_lsxfn")
+itemPath = NodePath("..")
+GrabPosition = NodePath("../GrabPos")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractablePickup" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.142214, 0.020382, 0)
+shape = SubResource("BoxShape3D_fnjsp")
+
+[node name="GrabPos" type="Node3D" parent="." index="2"]
+transform = Transform3D(-0.877545, 0.478462, -0.0314643, 0.463153, 0.862795, 0.20267, 0.124117, 0.163279, -0.978742, 0.158995, 0, 0)

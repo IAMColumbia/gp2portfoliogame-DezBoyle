@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b36wjx6umgiah"]
+
+[ext_resource type="Texture2D" uid="uid://cqhnb37cjcqok" path="res://Textures/rock_side_01.png" id="1_cy657"]
+
+[resource]
+albedo_texture = ExtResource("1_cy657")
+metallic_specular = 0.0
+anisotropy = 0.75
+texture_filter = 5

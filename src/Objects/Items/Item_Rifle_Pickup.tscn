@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cykvlekxx8fp7"]
+
+[ext_resource type="Script" path="res://Scripts/InteractablePickup.cs" id="1_ym4iv"]
+[ext_resource type="Script" path="res://Scripts/NetworkObject.cs" id="2_o7ks5"]
+[ext_resource type="PackedScene" uid="uid://md13hrquudbi" path="res://Models/Weapon_Rifle_01.blend" id="2_rs05r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mj5ed"]
+size = Vector3(0.452815, 0.420592, 1.04208)
+
+[node name="Item_Rifle_Pickup_" type="Area3D" node_paths=PackedStringArray("GrabPosition")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+script = ExtResource("1_ym4iv")
+itemScenePath = "res://Objects/Items/Item_Rifle.tscn"
+GrabPosition = NodePath("GrabPosition")
+
+[node name="Weapon_Rifle_01" parent="." instance=ExtResource("2_rs05r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.268113, 0.195106)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.186745, 0.0184236)
+shape = SubResource("BoxShape3D_mj5ed")
+
+[node name="GrabPosition" type="Node3D" parent="."]
+transform = Transform3D(-0.904789, 0.231068, -0.35772, 0.211342, 0.972892, 0.0938845, 0.369717, 0.00934455, -0.929097, 0, 0.133315, 0.312566)
+
+[node name="NetworkObject" type="Node" parent="."]
+script = ExtResource("2_o7ks5")

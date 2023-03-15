@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgn4ohaqkydl6"]
+
+[ext_resource type="Script" path="res://Scripts/InteractableRelayCollider.cs" id="1_3vu6i"]
+[ext_resource type="PackedScene" uid="uid://c3fv748bkm4g2" path="res://Objects/Mushroom_COTW_01_Item.tscn" id="1_wnxj6"]
+[ext_resource type="PackedScene" uid="uid://imaif0lka0c3" path="res://Models/Mushroom_ChickenOfTheWoods_01_Cluster.blend" id="2_aje8o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tro40"]
+size = Vector3(0.3, 0.272832, 0.638975)
+
+[node name="Mushrooms_ChickenOfTheWoods_01_" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="InteractableRelayCollider" type="Area3D" parent="."]
+transform = Transform3D(0.99998, -5.38992e-09, -0.0063007, 5.39191e-09, 1, 2.99614e-10, 0.0063007, -3.3358e-10, 0.99998, 0.152111, 0.00770102, 0.00229532)
+script = ExtResource("1_3vu6i")
+itemNodePath = NodePath("../Mushroom_COTW_01_Item_")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableRelayCollider"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
+shape = SubResource("BoxShape3D_tro40")
+
+[node name="Mushroom_COTW_01_Item_" parent="." instance=ExtResource("1_wnxj6")]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
+
+[node name="Mushroom_ChickenOfTheWoods_01_Cluster" parent="." instance=ExtResource("2_aje8o")]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)

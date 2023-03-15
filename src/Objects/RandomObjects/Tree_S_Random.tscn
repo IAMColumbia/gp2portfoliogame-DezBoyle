@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dha8bessnogdx"]
+
+[ext_resource type="Script" path="res://Scenes/RandomObjectPicker.cs" id="1_esepa"]
+[ext_resource type="PackedScene" uid="uid://bgnt6n1gao0ci" path="res://Objects/Tree_S_01.tscn" id="2_lor26"]
+[ext_resource type="PackedScene" uid="uid://b003qqiih8ceb" path="res://Objects/Tree_S_02.tscn" id="3_s3i5r"]
+
+[node name="Tree_S_Random_" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.93766, 0.301137, -0.69773)
+script = ExtResource("1_esepa")
+chanceToDelete = 0.15
+
+[node name="Tree_S_01_" parent="." instance=ExtResource("2_lor26")]
+
+[node name="Tree_S_02_" parent="." instance=ExtResource("3_s3i5r")]

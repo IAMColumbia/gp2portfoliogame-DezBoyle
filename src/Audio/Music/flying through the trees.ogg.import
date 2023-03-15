@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://blhk6g6jx8skl"
+path="res://.godot/imported/flying through the trees.ogg-5e581b515efde0aad8cecd145b6971e1.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Music/flying through the trees.ogg"
+dest_files=["res://.godot/imported/flying through the trees.ogg-5e581b515efde0aad8cecd145b6971e1.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

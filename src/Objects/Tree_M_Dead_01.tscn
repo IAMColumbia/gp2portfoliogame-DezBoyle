@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://lypdojjwgo1"]
+
+[ext_resource type="PackedScene" uid="uid://bv7fpii77dyh" path="res://Models/Tree_M_01.blend" id="1_yntti"]
+[ext_resource type="Material" uid="uid://vyvs5fwrh2u0" path="res://Materials/bark_01.tres" id="2_2ylyj"]
+
+[node name="Tree_M_01_" instance=ExtResource("1_yntti")]
+
+[node name="Tree" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_2ylyj")

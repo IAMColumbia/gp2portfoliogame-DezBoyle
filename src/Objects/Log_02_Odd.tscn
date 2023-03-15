@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://du7aii8hk76mj"]
+
+[ext_resource type="PackedScene" uid="uid://d11sbvwams0qb" path="res://Models/Log_02_Odd.blend" id="1_evye2"]
+[ext_resource type="Material" uid="uid://mbodn88xw0d1" path="res://Materials/bark_bare_decomposing_01.tres" id="3_7j12k"]
+
+[node name="Log_02_Odd_" instance=ExtResource("1_evye2")]
+
+[node name="Log_02_Odd" parent="." index="0"]
+surface_material_override/1 = ExtResource("3_7j12k")
