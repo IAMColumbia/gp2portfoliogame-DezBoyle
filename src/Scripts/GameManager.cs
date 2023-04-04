@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 
 public partial class GameManager : Node
 {
+	[Export] private bool loadTestLevel = false;
 	[Export] private bool singleplayer = false;
 	[Export] private bool allowCheats = false;
 	
@@ -20,6 +21,7 @@ public partial class GameManager : Node
 	public LevelManager Level { get; private set; }
 
 	[Export] private PackedScene levelScene;
+	[Export] private PackedScene testLevelScene;
 	[Export] private PackedScene playerScene;
 
 	private Player localPlayer;
@@ -52,7 +54,10 @@ public partial class GameManager : Node
 		}
 	}
 
-	public void LoadLevel() {LoadLevel(LevelScene.ResourcePath);}
+	public void LoadLevel() 
+	{
+		LoadLevel(loadTestLevel ? testLevelScene.ResourcePath : LevelScene.ResourcePath);
+	}
 	public void LoadLevel(string path)
 	{
 		if(Level != null)

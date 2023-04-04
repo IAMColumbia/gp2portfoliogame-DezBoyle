@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnefqvwod5ipt"
-path="res://.godot/imported/crosshair_normal.png-ff02a896c74fbbe712d66e62e3b8358f.ctex"
+uid="uid://dvbtutr1dwxaq"
+path="res://.godot/imported/EctoConceptLogo_01.png-005270cdf7efb844cab50e32cbdd7d9d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/crosshair_normal.png"
-dest_files=["res://.godot/imported/crosshair_normal.png-ff02a896c74fbbe712d66e62e3b8358f.ctex"]
+source_file="res://Artifacts/EctoConceptLogo_01.png"
+dest_files=["res://.godot/imported/EctoConceptLogo_01.png-005270cdf7efb844cab50e32cbdd7d9d.ctex"]
 
 [params]
 

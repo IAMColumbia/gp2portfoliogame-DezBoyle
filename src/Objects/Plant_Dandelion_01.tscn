@@ -1,9 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://b5xr3h42s7nco"]
+[gd_scene load_steps=7 format=3 uid="uid://b5xr3h42s7nco"]
 
-[ext_resource type="Script" path="res://Scripts/InteractablePickup.cs" id="1_1t7mo"]
-[ext_resource type="Script" path="res://Scripts/Item.cs" id="1_d3ygv"]
 [ext_resource type="Material" uid="uid://cuvl8rckma7du" path="res://Materials/plant_dandelion_01.tres" id="2_5y3xx"]
-[ext_resource type="Script" path="res://Scripts/NetworkObject.cs" id="5_dyglw"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_3ca3o"]
 _surfaces = [{
@@ -74,8 +71,6 @@ size = Vector3(0.75, 0.75, 0.75)
 
 [node name="Plant_Dandelion_01_" type="Node3D"]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
-script = ExtResource("1_d3ygv")
-InteractablePickupPath = NodePath("InteractablePickup")
 
 [node name="Leaves" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.730988, 0.340119, -0.591588, -0.458418, 0.886938, -0.0565148, 0.50548, 0.312506, 0.804257, 0, 0, 0)
@@ -89,14 +84,11 @@ skeleton = NodePath("")
 [node name="GrabPosition" type="Node3D" parent="."]
 transform = Transform3D(-0.904789, 0.231068, -0.35772, 0.211342, 0.972892, 0.0938845, 0.369717, 0.00934455, -0.929097, 0, 0.346991, 0)
 
-[node name="InteractablePickup" type="Area3D" parent="." node_paths=PackedStringArray("GrabPosition")]
+[node name="InteractablePickup" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0293614, 0)
-script = ExtResource("1_1t7mo")
-GrabPosition = NodePath("../GrabPosition")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractablePickup"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.369098, 0)
 shape = SubResource("BoxShape3D_mj5ed")
 
 [node name="NetworkObject" type="Node" parent="."]
-script = ExtResource("5_dyglw")

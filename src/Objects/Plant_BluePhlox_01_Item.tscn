@@ -1,9 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://bst5bqfwlimoh"]
+[gd_scene load_steps=15 format=3 uid="uid://bst5bqfwlimoh"]
 
 [ext_resource type="Material" uid="uid://bbiyd0yiwji7t" path="res://Materials/plant_bluePhlox_01.tres" id="1_8ojic"]
-[ext_resource type="Script" path="res://Scripts/StaticItem.cs" id="1_tnyea"]
-[ext_resource type="Texture2D" uid="uid://dfv7xgwuv4cpr" path="res://icon.svg" id="2_2mqr0"]
-[ext_resource type="Script" path="res://Scripts/InteractablePickup.cs" id="4_y8dx7"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_j5d3w"]
 _surfaces = [{
@@ -202,10 +199,6 @@ size = Vector3(0.142696, 0.421784, 0.13841)
 
 [node name="Plant_BluePhlox_01_" type="Node3D"]
 transform = Transform3D(0.45122, 0, -0.892413, 0, 1, 0, 0.892413, 0, 0.45122, 0, 0, 0)
-script = ExtResource("1_tnyea")
-IconTexture = ExtResource("2_2mqr0")
-ItemName = "BluePhlox"
-InteractablePickupPath = NodePath("InteractablePickup")
 
 [node name="Top" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -237,10 +230,7 @@ transform = Transform3D(0.00743324, 0.89235, -0.451283, 0.0599263, -0.450882, -0
 mesh = SubResource("ArrayMesh_ya6ir")
 skeleton = NodePath("")
 
-[node name="InteractablePickup" type="Area3D" parent="." node_paths=PackedStringArray("GrabPosition")]
-script = ExtResource("4_y8dx7")
-itemPath = NodePath("..")
-GrabPosition = NodePath("../GrabPosition")
+[node name="InteractablePickup" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractablePickup"]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0.194841, 0)

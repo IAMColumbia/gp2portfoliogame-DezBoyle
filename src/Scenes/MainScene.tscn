@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://bv7w4jbm1eje"]
+[gd_scene load_steps=14 format=3 uid="uid://bv7w4jbm1eje"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_5ub74"]
+[ext_resource type="PackedScene" uid="uid://cuimmqyyt3xcp" path="res://Scenes/Game.tscn" id="2_2nexj"]
 [ext_resource type="PackedScene" uid="uid://cxvcbdbi5lojm" path="res://Scenes/RandomTestScene.tscn" id="2_ngonf"]
 [ext_resource type="PackedScene" uid="uid://ca8i4iunrayk7" path="res://Objects/Player.tscn" id="3_xpxul"]
 [ext_resource type="Script" path="res://Scripts/Steam/SteamManager.cs" id="4_26fpt"]
@@ -17,7 +18,8 @@
 script = ExtResource("1_5ub74")
 singleplayer = true
 allowCheats = true
-levelScene = ExtResource("2_ngonf")
+levelScene = ExtResource("2_2nexj")
+testLevelScene = ExtResource("2_ngonf")
 playerScene = ExtResource("3_xpxul")
 
 [node name="SteamManager" type="Node" parent="."]
@@ -141,11 +143,6 @@ grow_vertical = 2
 texture = ExtResource("10_jvxci")
 expand_mode = 1
 
-[node name="Crosshair" type="TextureRect" parent="UI"]
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("8_bho1x")
-
 [node name="HealthIndicator" type="TextureRect" parent="UI"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -155,16 +152,21 @@ grow_vertical = 2
 texture = ExtResource("10_oj5tt")
 expand_mode = 1
 
+[node name="Crosshair" type="TextureRect" parent="UI"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("8_bho1x")
+
 [node name="Audio" type="Node" parent="."]
 script = ExtResource("9_3b33e")
 disableMusic = true
 music = ExtResource("10_gu06n")
 
-[node name="RichTextLabel" type="Label" parent="."]
+[node name="EctoVersion" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_font_sizes/font_size = 12
-text = "Ecto Prototype 1.0"
+text = "Ecto Prototype April.4.2023"
 
 [connection signal="button_down" from="UI/TitleScreen/MenuButtons/VBoxContainer/StartGameButton" to="UI" method="_on_start_game_button_button_down"]
 [connection signal="button_down" from="UI/TitleScreen/MenuButtons/VBoxContainer/SingleplayerButton" to="UI" method="_on_singleplayer_button_button_down"]

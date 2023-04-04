@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public static class Utility
 {
-    public const float HalfPI = Mathf.Pi / 2.1f;
+    public const float HalfPI = Mathf.Pi / 2.1f; //idk why this is 2.1
 
     public static Vector3 SmoothDamp(Vector3 current, Vector3 target, ref Vector3 currentVelocity, float smoothTime, float delta)
     {
@@ -237,5 +237,10 @@ public static class Utility
             node.GlobalRotation = rotationBefore;
             node.Scale = scaleBefore;
         }
+    }
+
+    public static uint GetCollisionLayer(int layer)
+    {
+        return (uint)Math.Pow(2, layer - 1);
     }
 }

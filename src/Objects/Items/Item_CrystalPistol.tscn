@@ -18,14 +18,14 @@ step = 0.025
 tracks/0/type = "rotation_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Weapon_CrystalPistol_01")
+tracks/0/path = NodePath("Weapon/Weapon_CrystalPistol_01")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.025, 1, 0.0556734, 0, 0, 0.998449, 0.275, 1, -0.0208855, 0, 0, 0.999782, 0.5, 1, 0, 0, 0, 1)
 tracks/1/type = "position_3d"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Weapon_CrystalPistol_01")
+tracks/1/path = NodePath("Weapon/Weapon_CrystalPistol_01")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, 0.274448, -0.155617, -0.326421, 0.075, 1, 0.274448, -0.155617, -0.225869, 0.275, 1, 0.274448, -0.184352, -0.317218, 0.5, 1, 0.274448, -0.155617, -0.326421)
@@ -38,13 +38,16 @@ _data = {
 [node name="Item_CrystalPistol" type="Node3D" node_paths=PackedStringArray("audio")]
 script = ExtResource("1_wl0td")
 Damage = 6
-Cooldown = 0.4
-Automatic = true
-Spread = 0.5
 audio = NodePath("AudioPlayer")
 shootSound = ExtResource("2_sonk0")
 shootAnimation = "CrystalPistol_Shoot"
 pickupScenePath = "res://Objects/Items/Item_CrystalPistol_Pickup.tscn"
+
+[node name="Weapon" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18, -0.15, -0.1)
+
+[node name="Weapon_CrystalPistol_01" parent="Weapon" instance=ExtResource("1_he6t7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.274448, -0.155617, -0.326421)
 
 [node name="TracerSpawner" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.282987, -0.102049, -0.893783)
@@ -53,14 +56,10 @@ script = ExtResource("3_brodp")
 [node name="Tracer" parent="TracerSpawner" instance=ExtResource("3_pnh5e")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 script = ExtResource("4_007l4")
-tracerDuration = 2.0
 
 [node name="Projectile_Laser_01" parent="TracerSpawner/Tracer" index="0"]
 transform = Transform3D(0.514692, 0, 0, 0, 0.514692, 0, 0, 0, 0.514692, 0, 0, 0)
 cast_shadow = 0
-
-[node name="Weapon_CrystalPistol_01" parent="." instance=ExtResource("1_he6t7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.274448, -0.155617, -0.326421)
 
 [node name="NetworkObject" type="Node" parent="."]
 script = ExtResource("4_nf5mt")

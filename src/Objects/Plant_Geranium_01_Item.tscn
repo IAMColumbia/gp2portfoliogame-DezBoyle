@@ -1,10 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dy5rabf6jiqby"]
+[gd_scene load_steps=6 format=3 uid="uid://dy5rabf6jiqby"]
 
-[ext_resource type="Script" path="res://Scripts/StaticItem.cs" id="1_fyian"]
-[ext_resource type="Texture2D" uid="uid://dfv7xgwuv4cpr" path="res://icon.svg" id="2_chnb7"]
 [ext_resource type="Material" uid="uid://tljbn0vsr6bx" path="res://Materials/plant_geranium_01.tres" id="2_o0psg"]
 [ext_resource type="Material" uid="uid://l16h8lf4t6n3" path="res://Materials/plant_geranium_01_leaf.tres" id="3_1ikf5"]
-[ext_resource type="Script" path="res://Scripts/InteractablePickup.cs" id="4_6uv24"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_4wb14"]
 _surfaces = [{
@@ -64,20 +61,12 @@ shadow_mesh = SubResource("ArrayMesh_4wb14")
 size = Vector3(0.28653, 0.45208, 0.261064)
 
 [node name="Plant_Geranium_01_Item_" type="Node3D"]
-script = ExtResource("1_fyian")
-IconTexture = ExtResource("2_chnb7")
-ItemName = "Geranium"
-InteractablePickupPath = NodePath("InteractablePickup")
-TargetRotation = Vector3(-9.803, -180, 0)
 
 [node name="Plant_Geranium_01_Top" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_m0vav")
 skeleton = NodePath("")
 
-[node name="InteractablePickup" type="Area3D" parent="." node_paths=PackedStringArray("GrabPosition")]
-script = ExtResource("4_6uv24")
-itemPath = NodePath("..")
-GrabPosition = NodePath("../GrabPosition")
+[node name="InteractablePickup" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractablePickup"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.207999, 0)

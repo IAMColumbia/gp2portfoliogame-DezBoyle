@@ -7,6 +7,7 @@
 
 [node name="Plant_Geranium_01_Item_" parent="." index="0" instance=ExtResource("2_elnyn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00688074, 0.871732, -0.00298077)
+script = null
 
 [node name="Plant_Geranium_01_Top" parent="." index="1"]
 visible = false

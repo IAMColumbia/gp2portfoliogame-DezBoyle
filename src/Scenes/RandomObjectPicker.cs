@@ -1,41 +1,72 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class RandomObjectPicker : Node3D
 {
+    [Export] public bool IgnoreInRandomPick = false; //this object will be ignored if it's parent is another RandomObjectPicker
 	[Export] private float chanceToDelete = 0.25f;
 	[Export] private bool pickOne = true;
+
+    private List<Node3D> children = new List<Node3D>();
 
 	public override void _Ready()
 	{
 		foreach(Node3D obj in GetChildren())
-		{ obj.Visible = !pickOne; }
+		{
+            if(obj is RandomObjectPicker && ((RandomObjectPicker)obj).IgnoreInRandomPick)
+            { continue; } //ugly solution
+            children.Add(obj);
+            obj.Visible = !pickOne;
+        }
 
 		if(pickOne)
-		{
-			float deleteRNG = Utility.RandomRange(0f, 1f);
-            if (deleteRNG >= chanceToDelete)
-            {
-                int objectRNG = Utility.RandomRange(0, GetChildCount());
-                GetChild<Node3D>(objectRNG).Visible = true;
-				GD.Print("turning on " + objectRNG);
-            }
-		}
+		{ RandomPickOne(); }
 		else
-		{
-			foreach(Node3D obj in GetChildren())
-			{
-                float deleteRNG = Utility.RandomRange(0f, 1f);
-                if (deleteRNG <= chanceToDelete)
-                { obj.Visible = false; }
-			}
-		}
-		
-		foreach(Node3D obj in GetChildren())
+		{ RandomPick(); }
+       
+        foreach(Node3D n in children)
         {
-            if (!obj.Visible)
-			{ obj.QueueFree(); }
-			//delete invisible objects
+            if(!n.Visible)
+            {
+                n.QueueFree();
+            }
         }
 	}
+
+	private void RandomPick()
+    {
+        int childCount = children.Count;
+        int childrenDeleted = 0;
+        foreach (Node3D n in children)
+        {
+            float deleteRNG = Utility.RandomRange(0f, 1f);
+            if (deleteRNG <= chanceToDelete)
+            {
+                childrenDeleted++;
+                n.Visible = false;
+                n.QueueFree();
+            }
+        }
+        if (childrenDeleted >= childCount)
+        {
+            //all children were deleted, also delete the root object
+            Visible = false;
+            QueueFree();
+        }
+    }
+
+    private void RandomPickOne()
+    {
+        float deleteRNG = Utility.RandomRange(0f, 1f);
+        if (deleteRNG < chanceToDelete)
+        {
+			Visible = false;
+            QueueFree();
+            return;
+        }
+
+        int objectRNG = Utility.RandomRange(0, children.Count);
+        children[objectRNG].Visible = true;
+    }
 }

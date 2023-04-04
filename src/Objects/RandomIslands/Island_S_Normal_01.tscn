@@ -1,0 +1,105 @@
+[gd_scene load_steps=11 format=3 uid="uid://ceijog8cn6wa4"]
+
+[ext_resource type="Script" path="res://Scripts/Island.cs" id="1_ibun3"]
+[ext_resource type="PackedScene" uid="uid://fpftn4pq6mjc" path="res://Models/Island_S_01.blend" id="1_vywaq"]
+[ext_resource type="Script" path="res://Scenes/RandomObjectPicker.cs" id="3_85k45"]
+[ext_resource type="PackedScene" uid="uid://dychhd0w5efvh" path="res://Objects/Plant_VirginiaCreeper_01.tscn" id="3_nmx31"]
+[ext_resource type="PackedScene" uid="uid://w7tku81t6j3u" path="res://Objects/RandomObjects/Shrub_Random.tscn" id="5_xs7kx"]
+[ext_resource type="PackedScene" uid="uid://bc41s8heha01h" path="res://Objects/Branch_Dead_Straight_01.tscn" id="6_6cwfl"]
+[ext_resource type="PackedScene" uid="uid://b3dpkju8c6jqa" path="res://Objects/Stump01.tscn" id="6_y2sex"]
+[ext_resource type="PackedScene" uid="uid://dkiqsb20hcarp" path="res://Objects/RandomObjects/Rocks_S_Random.tscn" id="8_5h2t7"]
+[ext_resource type="PackedScene" uid="uid://cygc13xg1756u" path="res://Objects/Items/Item_CrystalPistol_Pickup.tscn" id="9_4nl1g"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1sn3u"]
+radius = 3.28512
+
+[node name="Island_S_Normal_01_" type="Node3D" node_paths=PackedStringArray("connectionPointsNode", "boundsNode")]
+script = ExtResource("1_ibun3")
+connectionPointsNode = NodePath("ConnectionPoints")
+boundsNode = NodePath("Bounds")
+playerSpawnPosNodePath = NodePath("PlayerSpawnPos")
+
+[node name="Bounds" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12099, 0, 0.0831808)
+shape = SubResource("SphereShape3D_1sn3u")
+
+[node name="Island_S_01" parent="." instance=ExtResource("1_vywaq")]
+
+[node name="ConnectionPoints" type="Node3D" parent="."]
+
+[node name="ConnectionPoint_1" type="Node3D" parent="ConnectionPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.40364, 0, 0.066031)
+
+[node name="ConnectionPoint_2" type="Node3D" parent="ConnectionPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.35607, 0, 4.67837)
+
+[node name="ConnectionPoint_3" type="Node3D" parent="ConnectionPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5058, 0, 2.6316)
+
+[node name="ConnectionPoint_4" type="Node3D" parent="ConnectionPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.83167, 0, -3.93189)
+
+[node name="PlayerSpawnPos" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.324599, 1.49322, -0.154917)
+
+[node name="Foliage_RandomSpawn" type="Node3D" parent="."]
+script = ExtResource("3_85k45")
+pickOne = false
+
+[node name="Plant_VirginiaCreeper_01_" parent="Foliage_RandomSpawn" instance=ExtResource("3_nmx31")]
+transform = Transform3D(0.916493, -0.204463, 0.343853, 0.199662, 0.978602, 0.0497261, -0.346662, 0.0230808, 0.937706, -0.196421, 0.0753553, 1.52824)
+
+[node name="Plant_VirginiaCreeper_01_4" parent="Foliage_RandomSpawn" instance=ExtResource("3_nmx31")]
+transform = Transform3D(0.929101, -0.145507, 0.339996, 0.126763, 0.988953, 0.0768332, -0.34742, -0.0282868, 0.937283, 1.4891, 0.256685, 0.724341)
+
+[node name="Plant_VirginiaCreeper_01_3" parent="Foliage_RandomSpawn" instance=ExtResource("3_nmx31")]
+transform = Transform3D(0.929845, -0.123001, 0.346783, 0.0839323, 0.988528, 0.125571, -0.35825, -0.0876557, 0.929502, -1.39253, 0.0115116, -0.390355)
+
+[node name="Plant_VirginiaCreeper_01_2" parent="Foliage_RandomSpawn" instance=ExtResource("3_nmx31")]
+transform = Transform3D(0.930592, -0.0859797, 0.355816, 0.0341036, 0.988161, 0.149586, -0.364465, -0.127069, 0.922507, 0.830881, 0.0829798, -1.51049)
+
+[node name="ShrubOrStump_RNG" type="Node3D" parent="."]
+script = ExtResource("3_85k45")
+chanceToDelete = 0.5
+
+[node name="Shrub_Random_" parent="ShrubOrStump_RNG" instance=ExtResource("5_xs7kx")]
+transform = Transform3D(0.997593, 0.0693386, 0, -0.0693386, 0.997593, 0, 0, 0, 1, 1.19924, 0.138118, -1.47151)
+chanceToDelete = 0.0
+
+[node name="Stump_01_" parent="ShrubOrStump_RNG" instance=ExtResource("6_y2sex")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39649, -0.00753331, -1.54955)
+
+[node name="TEMP_Weapon_RNG2" type="Node3D" parent="ShrubOrStump_RNG/Stump_01_"]
+transform = Transform3D(-0.519459, -0.214481, -0.210142, -0.0768317, 0.50087, -0.321288, 0.290274, -0.251251, -0.461101, 0.373838, 0.650811, 1.184)
+script = ExtResource("3_85k45")
+IgnoreInRandomPick = true
+pickOne = false
+
+[node name="Item_CrystalPistol_Pickup_2" parent="ShrubOrStump_RNG/Stump_01_/TEMP_Weapon_RNG2" instance=ExtResource("9_4nl1g")]
+transform = Transform3D(1, 1.49012e-08, 2.98023e-08, -2.98023e-08, 1, 5.96046e-08, 2.98023e-08, 0, 1, 0, 0, 0)
+
+[node name="Branches_RandomSpawn" type="Node3D" parent="."]
+script = ExtResource("3_85k45")
+chanceToDelete = 0.5
+
+[node name="Branch_Dead_Straight_01_" parent="Branches_RandomSpawn" instance=ExtResource("6_6cwfl")]
+transform = Transform3D(0.845064, 0.468974, 0.256771, 0.110845, 0.316141, -0.942214, -0.52305, 0.824693, 0.215176, 1.96743, 0.361539, 1.1791)
+
+[node name="Rocks_S_Random" parent="." instance=ExtResource("8_5h2t7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46681, -0.0173025, 1.90432)
+
+[node name="Rocks_S_Random2" parent="." instance=ExtResource("8_5h2t7")]
+transform = Transform3D(-0.372113, 0, 0.928187, 0, 1, 0, -0.928187, 0, -0.372113, -1.94458, -0.0199572, 1.61873)
+
+[node name="Rocks_S_Random3" parent="." instance=ExtResource("8_5h2t7")]
+transform = Transform3D(-0.386647, 0, -0.922228, 0, 1, 0, 0.922228, 0, -0.386647, 2.72758, 0.247163, 0.127502)
+
+[node name="Rocks_S_Random4" parent="." instance=ExtResource("8_5h2t7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.788747, 0.00355095, -1.76321)
+
+[node name="Rocks_S_Random5" parent="." instance=ExtResource("8_5h2t7")]
+transform = Transform3D(-0.251547, -0.289907, -0.923406, -0.0657816, 0.956999, -0.282534, 0.965607, -0.0103275, -0.259801, 0.576848, 0.178058, 0.198214)

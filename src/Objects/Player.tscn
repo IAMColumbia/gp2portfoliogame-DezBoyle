@@ -42,7 +42,7 @@ transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, -0.898409, 0)
 transform = Transform3D(-1, 0, -8.74227e-08, 0, 1, 0, 8.74227e-08, 0, -1, -1.16415e-10, 0.435029, 0)
 cull_mask = 1048559
 environment = ExtResource("2_dnpit")
-fov = 80.0
+fov = 90.0
 
 [node name="DroppedItemPosition" type="Node3D" parent="PlayerBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.681761, 1.06532)
@@ -62,6 +62,7 @@ offset_right = 277.0
 offset_bottom = 235.0
 theme_override_font_sizes/font_size = 12
 script = ExtResource("3_d2i26")
+showDebug = true
 
 [node name="NameLabel" type="Label3D" parent="."]
 transform = Transform3D(1, -1.24146e-10, 0, 1.02887e-11, 1, 0, 0, -2.32831e-10, 1, -0.00366425, 1.31823, -1.16415e-10)

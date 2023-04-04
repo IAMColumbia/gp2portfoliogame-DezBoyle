@@ -69,31 +69,38 @@ public partial class InteractablePickup : Interactable
 
     public override void _Process(double delta)
     {
-		if(Float) 		//temporary
+		base._Process(delta);
+
+		if(!base.IsInteracting && originalPosition.HasValue)
 		{
+			GlobalPosition = GlobalPosition.Lerp(originalPosition.Value, (float)delta);
+		}
+
+        if (Float)      //temporary
+        {
             RotateY((float)delta);
 			return;
 		}
 
-		if(groundPos != null)
-		{
-            GlobalPosition = GlobalPosition.Lerp(groundPos, (float)delta * yVelocity);
-            yVelocity = Mathf.Lerp(yVelocity, 0f, (float)delta);
-			return;
-		}
+		// if(groundPos != null)
+		// {
+        //     GlobalPosition = GlobalPosition.Lerp(groundPos, (float)delta * yVelocity);
+        //     yVelocity = Mathf.Lerp(yVelocity, 0f, (float)delta);
+		// 	return;
+		// }
 
-        rayParams.From = GlobalPosition;
-        rayParams.To = GlobalPosition + Vector3.Down * (1f + floatHeight);
-        hit = GetWorld3D().DirectSpaceState.IntersectRay(rayParams);
+        // rayParams.From = GlobalPosition;
+        // rayParams.To = GlobalPosition + Vector3.Down * (1f + floatHeight);
+        // hit = GetWorld3D().DirectSpaceState.IntersectRay(rayParams);
 
-		if(hit != null && hit.Count > 0)
-		{
-			groundPos = (Vector3)hit["position"];	
-		}
+		// if(hit != null && hit.Count > 0)
+		// {
+		// 	groundPos = (Vector3)hit["position"];	
+		// }
 
-		yVelocity += (float)delta * 9.8f;
-		yVelocity = Mathf.Clamp(yVelocity, -terminalVelocity, terminalVelocity);
+		// yVelocity += (float)delta * 9.8f;
+		// yVelocity = Mathf.Clamp(yVelocity, -terminalVelocity, terminalVelocity);
 
-		Translate(Vector3.Down * yVelocity);
+		// Translate(Vector3.Down * yVelocity);
     }
 }

@@ -13,6 +13,8 @@ public partial class UI : Node
 
 	[Export] private Texture2D crosshairTex_Normal;
 	[Export] private Texture2D crosshairTex_Interact;
+	[Export] private float crosshairMinSize = 20f;
+	[Export] private float crosshairMaxSize = 75f;
 	[Export] private PackedScene friendLobbyUIElementScene;
 	[Export] private float hitMarkerDuration = 0.1f;
 
@@ -24,6 +26,7 @@ public partial class UI : Node
 	private VBoxContainer friendsLobbyListContainer;
 	private float lastTimeHitmarker = -420f;
 	private List<FriendLobbyUIElement> friendLobbyUIElements = new List<FriendLobbyUIElement>();
+	private float crosshairSize;
 
 
 	public override void _Ready()
@@ -36,6 +39,7 @@ public partial class UI : Node
 		
 		instance = this;
 		crosshair.GlobalPosition = GetCrosshairCenteredPosition();
+        crosshairSize = crosshair.Size.X;
 		SteamManager.OnMultiplayerLobbyRefreshCompleted += OnMultiplayerLobbyRefreshCompletedCallback;
 	}
 
@@ -53,26 +57,25 @@ public partial class UI : Node
 		this.player = player;
 	}
 
+	private float lastCrosshairSize;
+	private bool crosshairSizeChanged = false;
 	private void UpdateCrosshair(double delta)
 	{
 		crosshair.Visible = true;
-		
-		if(player.Interaction.Grabbing)
-        {
-			crosshairTargetPos = player.Cam.UnprojectPosition(player.Interaction.GrabPosition.GlobalPosition);
-			crosshairTargetPos.X -= crosshairTex_Normal.GetSize().X / 2f;
-			crosshairTargetPos.Y -= crosshairTex_Normal.GetSize().Y / 2f;
-		}
-		else
-        { crosshairTargetPos = GetCrosshairCenteredPosition(); }
 
-		crosshair.GlobalPosition = crosshair.GlobalPosition.Lerp(crosshairTargetPos, (float)delta * 32f);
+		float targetSize = crosshairSize;
 
+		//this is bad separation of concern.  The PlayerInteraction script shouldnt have anything to do with the UI
 		switch(player.Interaction.CrosshairType)
 		{
 			case PlayerInteraction.CrosshairTypeEnum.Normal:
 				crosshair.Texture = crosshairTex_Normal;
 				crosshair.Visible = true;
+				
+				Weapon weapon = player.Inventory.HeldItem as Weapon;
+				if(weapon != null)
+				{ targetSize = Mathf.Lerp(crosshairMinSize, crosshairMaxSize, weapon.SpreadPercentage); }
+
 				break;
 			case PlayerInteraction.CrosshairTypeEnum.Interact:
 				crosshair.Texture = crosshairTex_Interact;
@@ -82,6 +85,25 @@ public partial class UI : Node
 				crosshair.Visible = false;
 				break;
 		}
+
+		crosshair.Size = Vector2.One * targetSize;
+		crosshairSizeChanged = crosshair.Size.X != lastCrosshairSize;
+		lastCrosshairSize = crosshair.Size.X;
+
+		//Position
+        if (player.Interaction.Grabbing)
+        {
+            crosshairTargetPos = player.Cam.UnprojectPosition(player.Interaction.GrabPosition.GlobalPosition);
+            crosshairTargetPos.X -= crosshair.Size.X / 2f;
+            crosshairTargetPos.Y -= crosshair.Size.Y / 2f;
+        }
+        else
+        { crosshairTargetPos = GetCrosshairCenteredPosition(); }
+
+		if(!crosshairSizeChanged)
+		{ crosshair.GlobalPosition = crosshair.GlobalPosition.Lerp(crosshairTargetPos, (float)delta * 32f); }
+		else
+		{ crosshair.GlobalPosition = crosshairTargetPos; } //dont lerp if we changing crosshair sizes
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -102,8 +124,8 @@ public partial class UI : Node
 	private Vector2 GetCrosshairCenteredPosition()
 	{
 		crosshairPositionCenter = GetViewport().GetVisibleRect().Size / 2f;
-		crosshairPositionCenter.X -= crosshairTex_Normal.GetSize().X / 2f;
-		crosshairPositionCenter.Y -= crosshairTex_Normal.GetSize().Y / 2f;
+        crosshairPositionCenter.X -= crosshair.Size.X / 2f;
+        crosshairPositionCenter.Y -= crosshair.Size.Y / 2f;
 		return crosshairPositionCenter;
 	}
 

@@ -3,7 +3,7 @@ using Godot;
 
 public partial class Tracer : Node3D
 {
-    [Export] private float tracerSpeed = 2f;
+    [Export] private float tracerSpeed = 6f;
 
     private float sqrDistanceToTravel;
     private Vector3 originalPosition;
@@ -56,7 +56,7 @@ public partial class Tracer : Node3D
         float t = ((Time.GetTicksMsec() - lastTimeShot) / 1000f) * tracerSpeed;
         GlobalPosition = GlobalPosition.MoveToward(targetGlobalPosition, t); 
 
-        if(t >= 1f || GlobalPosition.DistanceSquaredTo(targetGlobalPosition) <= 0.25f)
+        if(GlobalPosition.DistanceSquaredTo(targetGlobalPosition) <= 0.25f)
         { Visible = false; }
     }
 }

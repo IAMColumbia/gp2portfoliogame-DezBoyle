@@ -1,10 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://c1cqe7f2i6lu"]
+[gd_scene load_steps=7 format=3 uid="uid://c1cqe7f2i6lu"]
 
 [ext_resource type="Material" uid="uid://c5kyqqac7a6hi" path="res://Materials/bark_03.tres" id="1_ksdb5"]
-[ext_resource type="Script" path="res://Scripts/PhysicsItem.cs" id="1_q11cr"]
-[ext_resource type="Texture2D" uid="uid://dfv7xgwuv4cpr" path="res://icon.svg" id="2_f5qm8"]
 [ext_resource type="Material" uid="uid://bydevefnqr8wj" path="res://Materials/stump_01.tres" id="2_g3owk"]
-[ext_resource type="Script" path="res://Scripts/InteractablePickup.cs" id="5_iyo8q"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_770jf"]
 points = PackedVector3Array(0.112215, 2.1278, -0.0675227, -0.253569, 1.45239, 0.129411, -0.253569, 1.45239, 0.185704, 0.0278064, -2.45857, -0.0956691, 0.084066, -0.938313, 0.0731485, -0.0566024, 1.19917, -0.0956691, -0.0566024, 1.2271, 0.21385, -0.0284918, -2.34592, 0.0731485, -0.0846744, -2.37385, -0.0675227, -0.253569, 1.59296, 0.0731485, 0.084066, 2.15573, 0.0450627, -0.0284918, 2.24045, -0.0675227, 0.119178, -0.821164, -0.0287852, -0.225381, 1.50871, 0.21385, 0.0559169, -2.40225, 0.0168861, 0.112215, 0.298931, 0.0450627, -0.0846744, -2.37385, 0.0168861, 0.0278064, 2.18412, -0.0956691, -0.0284918, 2.26837, 0.0168861, -0.0566024, -2.40225, -0.0956691, -0.140973, 1.08652, 0.21385, 0.112215, -1.05142, 0.0450627, 0.112215, 2.1278, 0.0168861, -0.225381, 1.36814, 0.21385, 0.0869925, -0.834361, -0.0725468, -0.0566024, 1.08652, 0.21385, -0.253569, 1.56503, 0.185704)
@@ -50,20 +47,10 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_5t3bf"]
-size = Vector3(0.495879, 4.71895, 0.40553)
-
 [node name="Branch_Snag_01_" type="Node3D"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -7.77879e-08, 0.119991, 0)
-script = ExtResource("1_q11cr")
-RigidbodyPath = NodePath("RigidBody3D")
-IconTexture = ExtResource("2_f5qm8")
-ItemName = "Snag"
-InteractablePickupPath = NodePath("RigidBody3D/InteractablePickup")
-TargetRotation = Vector3(20, 280, 50)
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
-angular_damp = 5.202
+[node name="RigidBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0107427, 0.466759, 0.0310943)
@@ -75,16 +62,3 @@ mesh = SubResource("ArrayMesh_po3bu")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("1_ksdb5")
 surface_material_override/1 = ExtResource("2_g3owk")
-
-[node name="InteractablePickup" type="Area3D" parent="RigidBody3D" node_paths=PackedStringArray("GrabPosition")]
-script = ExtResource("5_iyo8q")
-isSpawner = false
-itemPath = NodePath("../..")
-GrabPosition = NodePath("GrabPosition")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D/InteractablePickup"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0409952, 0.389454, 0.0819903)
-shape = SubResource("BoxShape3D_5t3bf")
-
-[node name="GrabPosition" type="Node3D" parent="RigidBody3D/InteractablePickup"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)

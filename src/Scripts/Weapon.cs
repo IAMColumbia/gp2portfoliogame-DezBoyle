@@ -4,17 +4,24 @@ using System;
 public partial class Weapon : Item
 {
     //Might split this class up into Weapon(base) -> RaycastWeapon, ProjectileWeapon, Ect..
-    [Export] public float Range = 100f;
-    [Export] public int Damage = 4;
-    [Export] public float Cooldown = 0.2f;
-    [Export] public bool Automatic = false;
-    [Export] public float Spread = 10f;
+    [Export] private float range = 100f;
+    [Export] public int Damage { get; private set; } = 4;
+    [Export] private float cooldown = 0.2f;
+    [Export] private bool automatic = false;
+    [Export] private float spreadMax = 3f;
+    [Export] private float spreadMin = .2f;
+    [Export] private float spreadPerShot = .45f;
+    [Export] private float spreadDecayRate = 5f;
     [Export] private AudioPlayer audio;
     [Export] private AudioStream shootSound;
     [Export] private string shootAnimation;
 
+    public float SpreadPercentage { get; private set; }
+
+    public static event Action OnPickup;
+
     private PhysicsRayQueryParameters3D rayParams;
-    private float lastTimeShot = -420f;
+    private float cooldownTimer;
     private AnimationPlayer animation;
     private TracerSpawner tracer;
     private MuzzleFlare muzzleFlare;
@@ -24,10 +31,11 @@ public partial class Weapon : Item
     public override void Init(Player p)
     {
         base.Init(p);
+        OnPickup?.Invoke();
 
         Godot.Collections.Array<Rid> exclude = new Godot.Collections.Array<Rid>();
         exclude.Add(new Rid(Player.PlayerBody as Godot.GodotObject));
-        rayParams = PhysicsRayQueryParameters3D.Create(Player.Cam.GlobalPosition, Player.Cam.GlobalPosition + Player.Cam.GlobalTransform.Basis.Z * Range, 1, exclude);
+        rayParams = PhysicsRayQueryParameters3D.Create(Player.Cam.GlobalPosition, Player.Cam.GlobalPosition + Player.Cam.GlobalTransform.Basis.Z * range, 1, exclude);
         rayParams.CollideWithAreas = true;
 
         animation = GetNode<AnimationPlayer>("AnimationPlayer");
@@ -49,8 +57,20 @@ public partial class Weapon : Item
     public override void _Process(double delta)
     {
         base._Process(delta);
-        if(base.JustClicked || (Automatic && base.Clicking))
-        { Shoot(); }
+
+        cooldownTimer += (float)delta; //i ran the numbers
+        //this will wrap in 1.079x10^31 years
+        //so yeah nah, not gunna clamp it
+        
+        bool fire = base.JustClicked || (automatic && base.Clicking);
+        
+        if(fire)
+        {
+            Shoot();
+        }
+
+        SpreadPercentage = Mathf.Lerp(SpreadPercentage, 0f, (float)delta * spreadDecayRate);
+        SpreadPercentage = Mathf.Clamp(SpreadPercentage, 0f, 1f);
     }
 
     private void Shoot()
@@ -59,11 +79,11 @@ public partial class Weapon : Item
         Node node;
         IDamagable damagable = null;
 
-        if(Time.GetTicksMsec() - lastTimeShot < Cooldown * 1000)
+        if(cooldownTimer < cooldown)
         { return; }
 
         //visual stuff
-        lastTimeShot = Time.GetTicksMsec();
+        cooldownTimer = 0f;
         audio.PlayOneShot(shootSound, -8f, Utility.RandomRange(0.9f, 1.1f));
         animation.Stop();
         animation.Play(shootAnimation);
@@ -71,13 +91,15 @@ public partial class Weapon : Item
 
         //raycast setup
         rayParams.From = Player.Cam.GlobalPosition;
-        rayParams.To = Player.Cam.GlobalPosition - Player.Cam.GlobalTransform.Basis.Z * Range;
+        rayParams.To = Player.Cam.GlobalPosition - Player.Cam.GlobalTransform.Basis.Z * range;
 
         //inaccuracy
         Vector3 inaccuracy = new Vector3();
-        inaccuracy += Player.Cam.GlobalTransform.Basis.X * Utility.RandomRange(-Spread, Spread);
-        inaccuracy += Player.Cam.GlobalTransform.Basis.Y * Utility.RandomRange(-Spread, Spread);
+        float spread = Mathf.Lerp(spreadMin, spreadMax, SpreadPercentage);
+        inaccuracy += Player.Cam.GlobalTransform.Basis.X * Utility.RandomRange(-spread, spread);
+        inaccuracy += Player.Cam.GlobalTransform.Basis.Y * Utility.RandomRange(-spread, spread);
         rayParams.To += inaccuracy;
+        SpreadPercentage += spreadPerShot;
 
         hit = GetWorld3D().DirectSpaceState.IntersectRay(rayParams);
 

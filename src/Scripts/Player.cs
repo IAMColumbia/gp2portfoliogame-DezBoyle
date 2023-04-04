@@ -322,7 +322,7 @@ public partial class Player : RigidBody3D, IDamagable
 			Freeze = noclip;
 			Interaction.Enabled = !noclip;
 			Interaction.HideCrosshair();
-			playerDebug.Enabled = !noclip;
+			playerDebug.Enabled = noclip;
 		}
 	}
 
@@ -337,10 +337,10 @@ public partial class Player : RigidBody3D, IDamagable
 
 	public void RespawnToLastIsland(Vector3 defaultSpawn)
 	{
-		if(!!GameManager.instance.Singleplayer && !NetworkPlayer.IsLocalPlayer)
+		if(!GameManager.instance.Singleplayer && !NetworkPlayer.IsLocalPlayer)
 		{ return; }
 		//go to spawn point of the last island we were on OR default
-		if(lastIsland == null)
+		if((lastIsland != null && !IsInstanceValid(lastIsland)) || lastIsland == null)
 		{ GlobalPosition = defaultSpawn; }
 		else
 		{ GlobalPosition = lastIsland.PlayerSpawnPos.GlobalPosition; }

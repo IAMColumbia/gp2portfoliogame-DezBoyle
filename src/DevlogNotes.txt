@@ -1,0 +1,19 @@
+Every island needs an area.  A bounding box.
+Also a set of points to connect other island's set of points to.  Snapping them together LEGO style
+
+When generating, make sure these safe areas dont collide.  If they do, undo and try other options (recursive)
+
+Generation: 
+Recipe: Braches - Amount of times to make a branch (a string of island-island makes a branch)
+BranchLengthMin/Max
+
+CreateBranch(Vec3 pos):
+CreateBranch (Island connectedIsland = null): 
+SpawnIslandRecursive(connectedisland or pos)
+//break condition is the random(branchlengthmin , max)
+//keep a command pattern of the islands that were spawned so they can be undone?
+//or just delete the previous one if we get ubstructed (no way to spawn the amount of islands needed (random min max))
+
+place the island in a the direction of (connected island - connected position) the vector away
+then rotate it around the Y axis until the point has the lowest distance to the connected Island to get the rotation
+then calculate the offset and place the island at the right position

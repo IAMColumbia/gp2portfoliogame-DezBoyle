@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://md13hrquudbi" path="res://Models/Weapon_Rifle_01.blend" id="2_rs05r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mj5ed"]
-size = Vector3(0.452815, 0.420592, 1.04208)
+size = Vector3(0.701227, 0.76741, 2.19628)
 
 [node name="Item_Rifle_Pickup_" type="Area3D" node_paths=PackedStringArray("GrabPosition")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
@@ -14,10 +14,10 @@ itemScenePath = "res://Objects/Items/Item_Rifle.tscn"
 GrabPosition = NodePath("GrabPosition")
 
 [node name="Weapon_Rifle_01" parent="." instance=ExtResource("2_rs05r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.268113, 0.195106)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.268113, 0.317164)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.186745, 0.0184236)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.264618, -0.113316)
 shape = SubResource("BoxShape3D_mj5ed")
 
 [node name="GrabPosition" type="Node3D" parent="."]
