@@ -40,7 +40,7 @@ public partial class Player : RigidBody3D, IDamagable
 		get { return (ground != null); }
 	}
 	public bool EnableLook { get; private set; } = true;
-	public bool EnableMove { get; private set; } = true;
+	public bool EnableMove { get; set; } = true;
 	public float Speed { get { return speed; } }
 	public float SpeedLimit { get { return speedLimit; } }
     public float MouseSensitivity { get { return sensitivity; } }
@@ -52,9 +52,10 @@ public partial class Player : RigidBody3D, IDamagable
 	public PlayerInventory Inventory { get; private set; }
 	public Node3D DroppedItemPosition { get; private set; }
     public Health Health { get; private set; }
-	
+
 	public float SensitivityMultiplier { get; set; } = 1f;
 	public float SpeedMultiplier { get; set; } = 1f;
+    public bool InsideOrb { get; set; } = false;
 
 	private PlayerDebug playerDebug;
 	private bool enabled;
@@ -157,7 +158,7 @@ public partial class Player : RigidBody3D, IDamagable
 
 		if (noclip)
 		{ MoveNoclip(delta); }
-		else
+		else if(EnableMove)
 		{ Move(delta); }
 	}
 
@@ -304,8 +305,6 @@ public partial class Player : RigidBody3D, IDamagable
 		moveInput = Vector3.Zero;
 		jumpInput = false;
 
-		if (!EnableMove)
-			return;
 		moveInput.Z += Input.IsActionPressed("forward") == true ? 1f : 0f;
 		moveInput.Z += Input.IsActionPressed("backward") == true ? -1f : 0f;
 		moveInput.X += Input.IsActionPressed("left") == true ? 1f : 0f;

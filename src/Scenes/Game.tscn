@@ -1,43 +1,46 @@
-[gd_scene load_steps=10 format=3 uid="uid://cuimmqyyt3xcp"]
+[gd_scene load_steps=13 format=3 uid="uid://cuimmqyyt3xcp"]
 
 [ext_resource type="Script" path="res://Scripts/LevelManager.cs" id="1_kc8pf"]
 [ext_resource type="Script" path="res://Scripts/LevelGenerator.cs" id="2_in7sq"]
-[ext_resource type="PackedScene" uid="uid://b8ca8xy7rptls" path="res://Objects/RandomIslands/Island_M_Normal_01.tscn" id="3_wkvnv"]
-[ext_resource type="PackedScene" uid="uid://ceijog8cn6wa4" path="res://Objects/RandomIslands/Island_S_Normal_01.tscn" id="4_4e0wd"]
-[ext_resource type="PackedScene" uid="uid://dbfqm5ho3ufwp" path="res://Objects/RandomIslands/Island_M_RampU_01.tscn" id="5_2u0eo"]
+[ext_resource type="PackedScene" uid="uid://cgpti8hrcwc63" path="res://Objects/RandomIslands/Island_M_Normal_01.tscn" id="3_wkvnv"]
+[ext_resource type="PackedScene" uid="uid://fnyv50yiqwar" path="res://Objects/RandomIslands/Island_S_Normal_01.tscn" id="4_4e0wd"]
+[ext_resource type="PackedScene" uid="uid://bucj2i4eaq5yo" path="res://Objects/RandomIslands/Island_M_RampU_01.tscn" id="5_2u0eo"]
 [ext_resource type="Script" path="res://Scripts/EnemySpawner.cs" id="6_ik6lg"]
+[ext_resource type="PackedScene" uid="uid://buiuylxbcvmdk" path="res://Objects/Orb.tscn" id="6_xxp0d"]
 [ext_resource type="PackedScene" uid="uid://b73ymovu8yh01" path="res://Objects/EnemyMissle.tscn" id="7_2f5d1"]
 [ext_resource type="Environment" uid="uid://ddk4bpicf51eg" path="res://Misc/ForestEnv.tres" id="8_uif8w"]
+[ext_resource type="PackedScene" uid="uid://bjdpvekxnips2" path="res://Objects/HomeBase.tscn" id="9_vh0jo"]
+[ext_resource type="PackedScene" uid="uid://bxjoijvv0k673" path="res://Objects/Portal.tscn" id="10_e3dkn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qwj0t"]
 size = Vector3(500, 10, 500)
 
-[node name="RandomTestScene" type="Node"]
+[node name="Game" type="Node3D" node_paths=PackedStringArray("orbPosition", "portal")]
 script = ExtResource("1_kc8pf")
 playerSpawnPath = NodePath("PlayerSpawn")
+orbPosition = NodePath("HomeBase/ORB3")
+portal = NodePath("Portal")
+fightDuration = 35.0
 
 [node name="LevelGenerator" type="Node3D" parent="."]
 script = ExtResource("2_in7sq")
+startingIslandNodePath = NodePath("../HomeBase")
 islandScenes = Array[PackedScene]([ExtResource("3_wkvnv"), ExtResource("4_4e0wd"), ExtResource("5_2u0eo")])
+objectScenes = Array[PackedScene]([ExtResource("6_xxp0d")])
+islandsMin = 12
+islandsMax = 18
+branches = 1
 
 [node name="EnemySpawner" type="Node3D" parent="."]
 script = ExtResource("6_ik6lg")
 enabled = false
 enemyScene = ExtResource("7_2f5d1")
-spawnDelayMin = 1.0
-amountToSpawn = 50
 
-[node name="Spawn_1" type="Node3D" parent="EnemySpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 26.4191, 0)
+[node name="Spawn_TopLeft" type="Node3D" parent="EnemySpawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.3275, 27.2578, -83.6377)
 
-[node name="Spawn_2" type="Node3D" parent="EnemySpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.4191, 50)
-
-[node name="Spawn_3" type="Node3D" parent="EnemySpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.4191, -50)
-
-[node name="Spawn_4" type="Node3D" parent="EnemySpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 26.4191, 0)
+[node name="Spawn_BottomRight" type="Node3D" parent="EnemySpawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -89.4748, 5.81592, -75.3387)
 
 [node name="FallTrigger" type="Area3D" parent="."]
 collision_mask = 2
@@ -47,7 +50,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -40, 0)
 shape = SubResource("BoxShape3D_qwj0t")
 
 [node name="PlayerSpawn" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.96208, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.81593, 1.1587, 1.98704)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.516264, 0.856429, 0, -0.856429, 0.516264, 0, -3.80074, 0)
@@ -57,3 +60,13 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("8_uif8w")
+
+[node name="Portal" parent="." instance=ExtResource("10_e3dkn")]
+
+[node name="HomeBase" parent="." instance=ExtResource("9_vh0jo")]
+transform = Transform3D(0.90266, 0, -0.430354, 0, 1, 0, 0.430354, 0, 0.90266, 0, 0, 0)
+
+[node name="ORB3" parent="HomeBase" index="1"]
+visible = false
+
+[editable path="HomeBase"]

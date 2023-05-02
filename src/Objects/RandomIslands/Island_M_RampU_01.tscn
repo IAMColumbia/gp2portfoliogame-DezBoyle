@@ -1,15 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://dbfqm5ho3ufwp"]
+[gd_scene load_steps=13 format=3 uid="uid://bucj2i4eaq5yo"]
 
 [ext_resource type="PackedScene" uid="uid://bi5jwogsfafh3" path="res://Models/Island_M_RampU_01.blend" id="1_8ng0o"]
 [ext_resource type="Script" path="res://Scripts/Island.cs" id="1_b78hw"]
 [ext_resource type="PackedScene" uid="uid://dychhd0w5efvh" path="res://Objects/Plant_VirginiaCreeper_01.tscn" id="3_kx8yt"]
-[ext_resource type="Script" path="res://Scenes/RandomObjectPicker.cs" id="4_6emky"]
-[ext_resource type="PackedScene" uid="uid://w7tku81t6j3u" path="res://Objects/RandomObjects/Shrub_Random.tscn" id="5_h20yt"]
+[ext_resource type="Script" path="res://Scripts/RandomObjectPicker.cs" id="4_t2arq"]
+[ext_resource type="PackedScene" path="res://Objects/RandomObjects/Shrub_Random.tscn" id="5_h20yt"]
 [ext_resource type="PackedScene" uid="uid://b3dpkju8c6jqa" path="res://Objects/Stump01.tscn" id="6_tbbrj"]
-[ext_resource type="PackedScene" uid="uid://dha8bessnogdx" path="res://Objects/RandomObjects/Tree_S_Random.tscn" id="7_6a1h0"]
+[ext_resource type="PackedScene" uid="uid://byvav2cgtj28v" path="res://Objects/RandomObjects/Tree_S_Random.tscn" id="7_6a1h0"]
 [ext_resource type="PackedScene" uid="uid://cwul07w1yxfkv" path="res://Objects/Log01.tscn" id="7_dvdlr"]
 [ext_resource type="PackedScene" uid="uid://c1cqe7f2i6lu" path="res://Objects/Branch_Snag_01.tscn" id="8_hosic"]
-[ext_resource type="PackedScene" uid="uid://dkiqsb20hcarp" path="res://Objects/RandomObjects/Rocks_S_Random.tscn" id="10_dcdip"]
+[ext_resource type="PackedScene" path="res://Objects/RandomObjects/Rocks_S_Random.tscn" id="10_dcdip"]
 [ext_resource type="PackedScene" uid="uid://cykvlekxx8fp7" path="res://Objects/Items/Item_Rifle_Pickup.tscn" id="11_tfswn"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_gfls2"]
@@ -83,7 +83,7 @@ transform = Transform3D(0.547297, -0.072911, -0.833757, 0.145466, 0.989323, 0.00
 
 [node name="ShrubOrStump_RNG" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.13648, 4.42782, 3.6324)
-script = ExtResource("4_6emky")
+script = ExtResource("4_t2arq")
 chanceToDelete = 0.5
 
 [node name="Shrub_Random_" parent="ShrubOrStump_RNG" instance=ExtResource("5_h20yt")]
@@ -93,7 +93,7 @@ transform = Transform3D(0.997593, 0.0693386, 0, -0.0693386, 0.997593, 0, 0, 0, 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39649, -0.00753331, -1.54955)
 
 [node name="TEMP_Weapon_RNG" type="Node3D" parent="ShrubOrStump_RNG/Stump_01_"]
-script = ExtResource("4_6emky")
+script = ExtResource("4_t2arq")
 IgnoreInRandomPick = true
 pickOne = false
 
@@ -114,7 +114,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.78827, 1.72068, -2.50039)
 chanceToDelete = 0.5
 
 [node name="Branch_RNG" type="Node3D" parent="."]
-script = ExtResource("4_6emky")
+script = ExtResource("4_t2arq")
 
 [node name="Branch_Snag_01_" parent="Branch_RNG" instance=ExtResource("8_hosic")]
 transform = Transform3D(0.570275, 0.63987, -0.515124, -0.657942, -0.0196656, -0.752812, -0.491832, 0.768231, 0.409783, -0.708019, 4.64838, 4.22302)

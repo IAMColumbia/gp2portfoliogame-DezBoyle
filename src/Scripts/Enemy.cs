@@ -26,6 +26,6 @@ public partial class Enemy : Node3D, IDamagable
 
     private void OnHealthChangedCallback()
     {
-        GD.Print("Enemy Health: " + health.Hp);
+        // GD.Print("Enemy Health: " + health.Hp);
     }
 }

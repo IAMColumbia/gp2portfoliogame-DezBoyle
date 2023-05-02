@@ -146,10 +146,10 @@ public partial class PlayerInteraction : Node3D
         { interactable = null; return; }
 
         //item limits
-        if(interactable.RequiredItem != "NONE" && (player.Inventory.HeldItem == null || interactable.RequiredItem != player.Inventory.HeldItem.ItemName)) //dont match
+        if(interactable.RequiredItem != "NONE" && (player.Inventory.EquippedItem == null || interactable.RequiredItem != player.Inventory.EquippedItem.ItemName)) //dont match
         { interactable = null; return; }
-        if(interactable.RequiredItem == "NONE" && player.Inventory.HeldItem != null) //cant interact while holding item
-        { interactable = null; return; }
+        // if(interactable.RequiredItem == "NONE" && player.Inventory.HeldItem != null) //cant interact while holding item
+        // { interactable = null; return; }
 
         interactable.Hover();
         
@@ -166,7 +166,7 @@ public partial class PlayerInteraction : Node3D
         { DoneGrabbing(); return; }
 
         //required item (Copy pasted bad mode)
-        if(interactable.RequiredItem != "NONE" && (player.Inventory.HeldItem == null || interactable.RequiredItem != player.Inventory.HeldItem.ItemName))
+        if(interactable.RequiredItem != "NONE" && (player.Inventory.EquippedItem == null || interactable.RequiredItem != player.Inventory.EquippedItem.ItemName))
         { DoneGrabbing(); return; }
 
         if(grabbedInteractable.GlobalPosition.DistanceSquaredTo(player.Cam.GlobalPosition) > sqrHandTooFarDistance)

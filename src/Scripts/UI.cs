@@ -23,6 +23,8 @@ public partial class UI : Node
     private TextureRect crosshair;
     private TextureRect hitMarker;
 	private TextureRect healthIndicator;
+	private TextureRect orbOverlay;
+	private TextureRect loadingScreen;
 	private VBoxContainer friendsLobbyListContainer;
 	private float lastTimeHitmarker = -420f;
 	private List<FriendLobbyUIElement> friendLobbyUIElements = new List<FriendLobbyUIElement>();
@@ -49,6 +51,7 @@ public partial class UI : Node
 		crosshair = GetNode<TextureRect>("Crosshair");
 		hitMarker = GetNode<TextureRect>("HitMarker");
 		healthIndicator = GetNode<TextureRect>("HealthIndicator");
+		orbOverlay = GetNode<TextureRect>("OrbOverlay");
         friendsLobbyListContainer = GetNode<VBoxContainer>("TitleScreen/Friends/FriendsLobbyList");
 	}
 
@@ -72,7 +75,7 @@ public partial class UI : Node
 				crosshair.Texture = crosshairTex_Normal;
 				crosshair.Visible = true;
 				
-				Weapon weapon = player.Inventory.HeldItem as Weapon;
+				Weapon weapon = player.Inventory.EquippedItem as Weapon;
 				if(weapon != null)
 				{ targetSize = Mathf.Lerp(crosshairMinSize, crosshairMaxSize, weapon.SpreadPercentage); }
 
@@ -118,6 +121,8 @@ public partial class UI : Node
 
 		healthIndicator.Modulate = new Godot.Color(healthIndicator.Modulate.R, healthIndicator.Modulate.G, healthIndicator.Modulate.B, Mathf.Lerp(1f, 0f, player.Health.PercentHp));
 		//healthIndicator.Modulate = new Godot.Color(healthIndicator.Modulate.R, healthIndicator.Modulate.G, healthIndicator.Modulate.B, 0f);
+
+		orbOverlay.Visible = player.InsideOrb;
 	}
 
     Vector2 crosshairPositionCenter;

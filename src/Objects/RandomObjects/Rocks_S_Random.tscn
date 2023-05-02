@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dkiqsb20hcarp"]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource type="PackedScene" uid="uid://h1tbtetjabld" path="res://Models/Rock_Small_01.blend" id="1_cxnof"]
-[ext_resource type="Script" path="res://Scenes/RandomObjectPicker.cs" id="1_eovbn"]
+[ext_resource type="Script" path="res://Scripts/RandomObjectPicker.cs" id="1_eovbn"]
 [ext_resource type="PackedScene" uid="uid://ccjlkwol8o335" path="res://Models/Rock_Small_02.blend" id="3_d36u7"]
 [ext_resource type="PackedScene" uid="uid://bmwnmpeqid1b2" path="res://Models/Rock_Small_03.blend" id="4_fd8fp"]
 [ext_resource type="PackedScene" uid="uid://mp2lyivt40qo" path="res://Models/Pebbles_01.blend" id="5_1r17m"]

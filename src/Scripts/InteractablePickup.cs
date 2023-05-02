@@ -5,7 +5,7 @@ public partial class InteractablePickup : Interactable
 {
 	[Export] public bool Float = false;
 	[Export] private float floatHeight = 0.6f;
-	[Export] private string itemScenePath = "res://Objects/Items/Item_CrystalPistol.tscn";
+	[Export(PropertyHint.File)] private string itemScenePath = "res://Objects/Items/Item_CrystalPistol.tscn";
 	[Export] private float pickupDistance = .25f;
 
 	private float sqrPickupMouseDistance;
@@ -60,7 +60,7 @@ public partial class InteractablePickup : Interactable
 		//if(totalMouseDistance.LengthSquared() > sqrPickupMouseDistance)
 		if(totalMouseDistance.Y >= verticalLimit - 5 || GlobalPosition.DistanceSquaredTo(player.Cam.GlobalPosition) < sqrPickupMouseDistance)
 		{
-			GD.Print(totalMouseDistance);
+			GD.Print("Total Mouse Distance: " + totalMouseDistance);
 			base.Enabled = false;
 			player.Inventory.Pickup(packedScene);
             GameManager.instance.DeleteObject(networkObject);

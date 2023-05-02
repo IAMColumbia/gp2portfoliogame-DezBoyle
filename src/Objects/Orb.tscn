@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://buiuylxbcvmdk"]
+
+[ext_resource type="Script" path="res://Scripts/IslandObject.cs" id="1_bmr51"]
+[ext_resource type="Material" uid="uid://b3r413ob56odg" path="res://Materials/ORB.tres" id="1_qun8p"]
+[ext_resource type="PackedScene" uid="uid://cule1k7hrcq7n" path="res://Models/Orb.blend" id="2_70rib"]
+[ext_resource type="Script" path="res://Scripts/Orb.cs" id="2_ch32g"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_guvx1"]
+radius = 2.71
+
+[node name="Orb" type="Node3D"]
+script = ExtResource("1_bmr51")
+SpawnType = 3
+
+[node name="Orb" parent="." instance=ExtResource("2_70rib")]
+script = ExtResource("2_ch32g")
+
+[node name="OrbOutside" parent="Orb" index="0"]
+material_override = ExtResource("1_qun8p")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Orb"]
+light_color = Color(0.890196, 0.917647, 0.67451, 1)
+light_energy = 3.22
+shadow_enabled = true
+shadow_opacity = 0.46
+shadow_blur = 5.509
+omni_range = 19.3292
+
+[node name="Area3D" type="Area3D" parent="Orb"]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Orb/Area3D"]
+shape = SubResource("SphereShape3D_guvx1")
+
+[editable path="Orb"]

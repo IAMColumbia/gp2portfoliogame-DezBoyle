@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dychhd0w5efvh"]
+[gd_scene load_steps=6 format=3 uid="uid://dychhd0w5efvh"]
 
 [ext_resource type="PackedScene" uid="uid://ck7jprfswa4id" path="res://Models/Plant_VirginiaCreeper_01.blend" id="1_kj5sv"]
+[ext_resource type="PackedScene" uid="uid://bredygmasa6j4" path="res://Objects/Plant_BluePhlox.tscn" id="2_5utdh"]
+[ext_resource type="Script" path="res://Scripts/RandomObjectPicker.cs" id="2_qe44f"]
+[ext_resource type="PackedScene" uid="uid://c7w24xi1d0b0j" path="res://Objects/Plant_Geranium_01.tscn" id="4_s25tr"]
+[ext_resource type="PackedScene" uid="uid://b5xr3h42s7nco" path="res://Objects/Plant_Dandelion_01.tscn" id="5_eaxki"]
 
 [node name="Plant_VirginiaCreeper_01_" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.43099, -0.398267, 1.11539)
@@ -16,3 +20,39 @@ transform = Transform3D(0.559196, 0.0174594, 0.828852, 0.165447, 0.977317, -0.13
 
 [node name="Plant_VirginiaCreeper_04" parent="." instance=ExtResource("1_kj5sv")]
 transform = Transform3D(0.830551, -0.00237261, -0.556938, -0.0632314, 0.993124, -0.0985265, 0.553342, 0.117047, 0.82469, -0.209533, 0.122638, -0.784255)
+
+[node name="Plants_RNG" type="Node3D" parent="."]
+script = ExtResource("2_qe44f")
+
+[node name="BluePhlox" type="Node3D" parent="Plants_RNG"]
+
+[node name="Plant_BluePhlox_01_" parent="Plants_RNG/BluePhlox" instance=ExtResource("2_5utdh")]
+transform = Transform3D(0.45122, 0, 0.892413, 0, 1, 0, -0.892413, 0, 0.45122, -0.589572, 0.0133528, -0.148935)
+
+[node name="Plant_BluePhlox_01_2" parent="Plants_RNG/BluePhlox" instance=ExtResource("2_5utdh")]
+transform = Transform3D(-0.994134, 0, 0.108155, 0, 1, 0, -0.108155, 0, -0.994134, -0.685702, 0.0133528, 0.169646)
+
+[node name="Plant_BluePhlox_01_3" parent="Plants_RNG/BluePhlox" instance=ExtResource("2_5utdh")]
+transform = Transform3D(-0.994134, 0, 0.108155, 0, 1, 0, -0.108155, 0, -0.994134, -0.398816, 0.0133528, 0.197528)
+
+[node name="Geranium" type="Node3D" parent="Plants_RNG"]
+
+[node name="Plant_Geranium_01_" parent="Plants_RNG/Geranium" instance=ExtResource("4_s25tr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37073, 0, 0.753878)
+
+[node name="Plant_Geranium_01_2" parent="Plants_RNG/Geranium" instance=ExtResource("4_s25tr")]
+transform = Transform3D(-1.04172, 0, -0.475926, 0, 1.14529, 0, 0.475926, 0, -1.04172, 0.588718, 0, 0.939284)
+
+[node name="Plant_Geranium_01_3" parent="Plants_RNG/Geranium" instance=ExtResource("4_s25tr")]
+transform = Transform3D(0.158057, 0, -0.864501, 0, 0.878831, 0, 0.864501, 0, 0.158057, 0.712918, 0, 0.549073)
+
+[node name="Dandelion" type="Node3D" parent="Plants_RNG"]
+
+[node name="Plant_Dandelion_01_" parent="Plants_RNG/Dandelion" instance=ExtResource("5_eaxki")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.462193, 0.0775671, -0.502895)
+
+[node name="Plant_Dandelion_01_2" parent="Plants_RNG/Dandelion" instance=ExtResource("5_eaxki")]
+transform = Transform3D(0.22178, 0, -0.557507, 0, 0.6, 0, 0.557507, 0, 0.22178, 0.471182, -0.0132493, -0.158515)
+
+[node name="Plant_Dandelion_01_3" parent="Plants_RNG/Dandelion" instance=ExtResource("5_eaxki")]
+transform = Transform3D(-0.536638, 0, -0.268365, 0, 0.6, 0, 0.268365, 0, -0.536638, 0.761342, -0.0132493, -0.287466)

@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://w7tku81t6j3u"]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://Scenes/RandomObjectPicker.cs" id="1_b3412"]
+[ext_resource type="Script" path="res://Scripts/RandomObjectPicker.cs" id="1_b3412"]
 [ext_resource type="PackedScene" uid="uid://bhdotdbvko7yp" path="res://Objects/Shrub_01.tscn" id="1_erie5"]
 
 [node name="Shrub_Random_" type="Node3D"]

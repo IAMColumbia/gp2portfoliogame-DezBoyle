@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public partial class Item : Node3D
 {
-	[Export] private string pickupScenePath = "res://Objects/Items/Item_CrystalPistol";
+	[Export(PropertyHint.File)] private string pickupScenePath = "res://Objects/Items/Item_CrystalPistol.tscn";
 	[Export] public Texture2D IconTexture;
 	[Export] public string ItemName;
 

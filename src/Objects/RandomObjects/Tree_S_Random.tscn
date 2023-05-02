@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dha8bessnogdx"]
+[gd_scene load_steps=4 format=3 uid="uid://byvav2cgtj28v"]
 
-[ext_resource type="Script" path="res://Scenes/RandomObjectPicker.cs" id="1_esepa"]
+[ext_resource type="Script" path="res://Scripts/RandomObjectPicker.cs" id="1_esepa"]
 [ext_resource type="PackedScene" uid="uid://bgnt6n1gao0ci" path="res://Objects/Tree_S_01.tscn" id="2_lor26"]
 [ext_resource type="PackedScene" uid="uid://b003qqiih8ceb" path="res://Objects/Tree_S_02.tscn" id="3_s3i5r"]
 

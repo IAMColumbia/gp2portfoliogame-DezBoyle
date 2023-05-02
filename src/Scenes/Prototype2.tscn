@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://b86m2c78vyoiv"]
+[gd_scene load_steps=55 format=3 uid="uid://dl0tdbu2s6bry"]
 
 [ext_resource type="Script" path="res://Scripts/LevelManager.cs" id="1_g8wi3"]
 [ext_resource type="Environment" uid="uid://ddk4bpicf51eg" path="res://Misc/ForestEnv.tres" id="2_r4qes"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bc41s8heha01h" path="res://Objects/Branch_Dead_Straight_01.tscn" id="4_8072a"]
 [ext_resource type="PackedScene" uid="uid://dacbv4hs8co0m" path="res://Objects/Branch_Dead_Wiggly_01.tscn" id="5_d564v"]
 [ext_resource type="PackedScene" uid="uid://b5xr3h42s7nco" path="res://Objects/Plant_Dandelion_01.tscn" id="6_wotuv"]
-[ext_resource type="PackedScene" uid="uid://bredygmasa6j4" path="res://Objects/Plant_BluePhlox_01.tscn" id="7_gohlt"]
+[ext_resource type="PackedScene" uid="uid://bredygmasa6j4" path="res://Objects/Plant_BluePhlox.tscn" id="7_gohlt"]
 [ext_resource type="PackedScene" uid="uid://c7w24xi1d0b0j" path="res://Objects/Plant_Geranium_01.tscn" id="8_7vuom"]
 [ext_resource type="Material" uid="uid://b15agh2ege0t1" path="res://Materials/bark_bare_mossy_01.tres" id="9_cjyj1"]
 [ext_resource type="PackedScene" uid="uid://b3dpkju8c6jqa" path="res://Objects/Stump01.tscn" id="9_vrqlf"]
@@ -173,7 +173,6 @@ shadow_enabled = true
 environment = ExtResource("2_r4qes")
 
 [node name="Segment_01" type="Node3D" parent="."]
-visible = false
 
 [node name="Island_M_Circular_01_" parent="Segment_01" instance=ExtResource("3_g2nxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.212182, -0.589539, 0.103328)
@@ -648,8 +647,6 @@ transform = Transform3D(0.339641, 0, 0.940556, 0, 1, 0, -0.940556, 0, 0.339641, 
 [node name="COTWPlaceItem" type="Area3D" parent="Segment_02/Totem Island" node_paths=PackedStringArray("GrabPosition")]
 transform = Transform3D(0.0932745, 0, -0.99564, 0, 1, 0, 0.99564, 0, 0.0932745, 1.67557, 5.24747, 2.30654)
 script = ExtResource("33_wr4ih")
-hologramItemPath = NodePath("Mushroom_ChickenOfTheWoods_01_Hologram")
-placedItemPath = NodePath("Mushroom_ChickenOfTheWoods_01_Placed")
 GrabPosition = NodePath("Mushroom_ChickenOfTheWoods_01_Hologram")
 RequiredItem = "ChickenOfTheWoods"
 
@@ -670,8 +667,6 @@ shape = SubResource("BoxShape3D_no72p")
 [node name="DandelionPlaceItem" type="Area3D" parent="Segment_02/Totem Island" node_paths=PackedStringArray("GrabPosition")]
 transform = Transform3D(0.477494, 0, 0.363318, 0, 0.6, 0, -0.363318, 0, 0.477494, 1.82012, 4.51893, 2.72303)
 script = ExtResource("33_wr4ih")
-hologramItemPath = NodePath("Plant_Dandelion_01_Hologram")
-placedItemPath = NodePath("Plant_Dandelion_01_Placed")
 GrabPosition = NodePath("Plant_Dandelion_01_Hologram")
 RequiredItem = "Dandelion"
 
@@ -700,8 +695,6 @@ surface_material_override/0 = ExtResource("36_qqq1e")
 [node name="DandelionPlaceItem2" type="Area3D" parent="Segment_02/Totem Island" node_paths=PackedStringArray("GrabPosition")]
 transform = Transform3D(0.477494, 0, 0.363318, 0, 0.6, 0, -0.363318, 0, 0.477494, 1.2687, 4.51893, 2.01896)
 script = ExtResource("33_wr4ih")
-hologramItemPath = NodePath("Plant_Dandelion_01_Hologram")
-placedItemPath = NodePath("Plant_Dandelion_01_Placed")
 GrabPosition = NodePath("Plant_Dandelion_01_Hologram")
 RequiredItem = "Dandelion"
 
@@ -730,8 +723,6 @@ surface_material_override/0 = ExtResource("36_qqq1e")
 [node name="GeraniumPlaceItem" type="Area3D" parent="Segment_02/Totem Island" node_paths=PackedStringArray("GrabPosition")]
 transform = Transform3D(0.477494, 0, 0.363318, 0, 0.6, 0, -0.363318, 0, 0.477494, 2.25266, 4.57256, 2.27802)
 script = ExtResource("33_wr4ih")
-hologramItemPath = NodePath("Plant_Geranium_01_Hologram")
-placedItemPath = NodePath("Plant_Geranium_01_Placed")
 GrabPosition = NodePath("Plant_Geranium_01_Placed")
 RequiredItem = "Geranium"
 

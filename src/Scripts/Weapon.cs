@@ -1,11 +1,12 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class Weapon : Item
 {
     //Might split this class up into Weapon(base) -> RaycastWeapon, ProjectileWeapon, Ect..
     [Export] private float range = 100f;
-    [Export] public int Damage { get; private set; } = 4;
+    [Export] private int damage = 4;
     [Export] private float cooldown = 0.2f;
     [Export] private bool automatic = false;
     [Export] private float spreadMax = 3f;
@@ -17,6 +18,20 @@ public partial class Weapon : Item
     [Export] private string shootAnimation;
 
     public float SpreadPercentage { get; private set; }
+    public float Cooldown
+    {
+        get
+        {
+            return cooldown;
+        }
+    }
+    public int Damage
+    {
+        get
+        {
+            return damage;
+        }
+    }
 
     public static event Action OnPickup;
 
@@ -25,6 +40,7 @@ public partial class Weapon : Item
     private AnimationPlayer animation;
     private TracerSpawner tracer;
     private MuzzleFlare muzzleFlare;
+    private List<WeaponMod> weaponMods = new List<WeaponMod>();
     // private Node3D[] tracers;
     // private const int tracerAmt = 6;
 
@@ -58,32 +74,29 @@ public partial class Weapon : Item
     {
         base._Process(delta);
 
+        bool fire = base.JustClicked || (automatic && base.Clicking);
+        if (fire)
+        { Shoot(); }
+
         cooldownTimer += (float)delta; //i ran the numbers
         //this will wrap in 1.079x10^31 years
         //so yeah nah, not gunna clamp it
-        
-        bool fire = base.JustClicked || (automatic && base.Clicking);
-        
-        if(fire)
-        {
-            Shoot();
-        }
 
         SpreadPercentage = Mathf.Lerp(SpreadPercentage, 0f, (float)delta * spreadDecayRate);
         SpreadPercentage = Mathf.Clamp(SpreadPercentage, 0f, 1f);
     }
 
-    private void Shoot()
+    public void Shoot()
     {
         Godot.Collections.Dictionary hit;
         Node node;
         IDamagable damagable = null;
 
-        if(cooldownTimer < cooldown)
+        if(cooldownTimer < Cooldown)
         { return; }
+        cooldownTimer = 0f;
 
         //visual stuff
-        cooldownTimer = 0f;
         audio.PlayOneShot(shootSound, -8f, Utility.RandomRange(0.9f, 1.1f));
         animation.Stop();
         animation.Play(shootAnimation);
@@ -112,7 +125,7 @@ public partial class Weapon : Item
         { tracer.ShootAt((Vector3)hit["position"], 0f, rayParams.To); }
 
         node = (Node)hit["collider"];
-        GD.Print("Hit!" + node);
+        // GD.Print("Hit!" + node);
 
         while (damagable == null) //search for interactables.
         {
@@ -127,5 +140,29 @@ public partial class Weapon : Item
 
         damagable.Damage(Damage);
         UI.instance.ShowHitmarker();
+    }
+
+    public void AttachWeaponMod(WeaponMod mod)
+    {
+		GD.Print("Attaching Weapon Mod: " + mod.Name);
+        mod.GetParent().RemoveChild(mod);
+		AddChild(mod);
+
+        //put the mod in a spot
+		mod.Position = Vector3.Zero;
+		mod.Rotation = Vector3.Zero;
+
+        weaponMods.Add(mod);
+    }
+
+    public Item RemoveWeaponMod()
+    {
+        if(weaponMods.Count == 0)
+        { return null; }
+
+        int lastIndex = weaponMods.Count - 1;
+        Item removedMod = weaponMods[lastIndex];
+        weaponMods.RemoveAt(lastIndex);
+        return removedMod;
     }
 }

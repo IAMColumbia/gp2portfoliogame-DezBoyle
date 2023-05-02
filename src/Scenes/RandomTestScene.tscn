@@ -1,39 +1,66 @@
-[gd_scene load_steps=10 format=3 uid="uid://cxvcbdbi5lojm"]
+[gd_scene load_steps=16 format=3 uid="uid://cxvcbdbi5lojm"]
 
 [ext_resource type="Script" path="res://Scripts/LevelManager.cs" id="1_ewyw2"]
+[ext_resource type="Script" path="res://Scripts/TestIslandRespawner.cs" id="2_ejabx"]
 [ext_resource type="Environment" uid="uid://ddk4bpicf51eg" path="res://Misc/ForestEnv.tres" id="2_xca3q"]
 [ext_resource type="Script" path="res://Scripts/EnemySpawner.cs" id="2_yq6jo"]
 [ext_resource type="PackedScene" uid="uid://3aknufpor1x4" path="res://Models/Player_Wizard_01.blend" id="5_2mg25"]
-[ext_resource type="PackedScene" uid="uid://b8ca8xy7rptls" path="res://Objects/RandomIslands/Island_M_Normal_01.tscn" id="5_wtepq"]
+[ext_resource type="PackedScene" uid="uid://cgpti8hrcwc63" path="res://Objects/RandomIslands/Island_M_Normal_01.tscn" id="5_wtepq"]
 [ext_resource type="PackedScene" uid="uid://b73ymovu8yh01" path="res://Objects/EnemyMissle.tscn" id="7_e6veo"]
 [ext_resource type="PackedScene" uid="uid://cygc13xg1756u" path="res://Objects/Items/Item_CrystalPistol_Pickup.tscn" id="8_qtajf"]
+[ext_resource type="PackedScene" uid="uid://fnyv50yiqwar" path="res://Objects/RandomIslands/Island_S_Normal_01.tscn" id="10_agbxd"]
 [ext_resource type="PackedScene" uid="uid://cykvlekxx8fp7" path="res://Objects/Items/Item_Rifle_Pickup.tscn" id="10_btd1y"]
+[ext_resource type="PackedScene" uid="uid://bucj2i4eaq5yo" path="res://Objects/RandomIslands/Island_M_RampU_01.tscn" id="11_pgueh"]
+[ext_resource type="PackedScene" uid="uid://buiuylxbcvmdk" path="res://Objects/Orb.tscn" id="12_27bef"]
+[ext_resource type="PackedScene" uid="uid://bjdpvekxnips2" path="res://Objects/HomeBase.tscn" id="13_nc5ma"]
+[ext_resource type="PackedScene" uid="uid://bxjoijvv0k673" path="res://Objects/Portal.tscn" id="14_do77m"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qwj0t"]
 size = Vector3(500, 10, 500)
 
-[node name="RandomTestScene" type="Node"]
+[node name="RandomTestScene" type="Node3D" node_paths=PackedStringArray("orbPosition")]
 script = ExtResource("1_ewyw2")
-playerSpawnPath = NodePath("PlayerSpawn")
+playerSpawnPath = NodePath("TestIslands/PlayerSpawn")
+orbPosition = NodePath("HomeBase/ORB3")
+fightDuration = 25.0
 
-[node name="Island_M_Normal_01_" parent="." instance=ExtResource("5_wtepq")]
+[node name="TestIslands" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.2957, 0.497398, 12.6193)
+script = ExtResource("2_ejabx")
 
-[node name="EnemySpawner" type="Node" parent="."]
+[node name="PlayerSpawn" type="Node3D" parent="TestIslands"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.96208, 0)
+
+[node name="Island_M_Normal_01_" parent="TestIslands" instance=ExtResource("5_wtepq")]
+
+[node name="Island_S_Normal_01_" parent="TestIslands" instance=ExtResource("10_agbxd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.54587, 0.499606, -2.7413)
+
+[node name="Island_M_RampU_01_" parent="TestIslands" instance=ExtResource("11_pgueh")]
+transform = Transform3D(-0.343201, 0, 0.939262, 0, 1, 0, -0.939262, 0, -0.343201, 13.1972, -1.14414, 6.07466)
+
+[node name="ORB" parent="TestIslands" instance=ExtResource("12_27bef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.07617, 0, 9.01478)
+
+[node name="Item_Rifle_Pickup_" parent="TestIslands" instance=ExtResource("10_btd1y")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.791737, 0.705004, -0.777463)
+
+[node name="Item_CrystalPistol_Pickup_" parent="TestIslands" instance=ExtResource("8_qtajf")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.290719, 0.618491, -1.28304)
+
+[node name="Player_Wizard_01" parent="TestIslands" instance=ExtResource("5_2mg25")]
+transform = Transform3D(0.367934, 0, 0.595504, 0, 0.7, 0, -0.595504, 0, 0.367934, -1.77938, 0.653571, -0.604199)
+
+[node name="EnemySpawner" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 44.3413, 1.90735e-06, 14.9811)
 script = ExtResource("2_yq6jo")
-enabled = false
 enemyScene = ExtResource("7_e6veo")
 
-[node name="Spawn_1" type="Node3D" parent="EnemySpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.148, 5.81592, 2.39073)
+[node name="Spawn_TopLeft" type="Node3D" parent="EnemySpawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.3275, 27.2578, 54.949)
 
-[node name="Spawn_2" type="Node3D" parent="EnemySpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.7069, 5.81592, 35.2249)
-
-[node name="Spawn_3" type="Node3D" parent="EnemySpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.2718, 5.81592, 38.3482)
-
-[node name="Spawn_4" type="Node3D" parent="EnemySpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.4589, 5.81592, 4.68022)
+[node name="Spawn_BottomRight" type="Node3D" parent="EnemySpawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -89.4748, 5.81592, 63.248)
 
 [node name="FallTrigger" type="Area3D" parent="."]
 collision_mask = 2
@@ -41,9 +68,6 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FallTrigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20.1412, 0)
 shape = SubResource("BoxShape3D_qwj0t")
-
-[node name="PlayerSpawn" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.96208, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.516264, 0.856429, 0, -0.856429, 0.516264, 0, -3.80074, 0)
@@ -54,11 +78,8 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_xca3q")
 
-[node name="Player_Wizard_01" parent="." instance=ExtResource("5_2mg25")]
-transform = Transform3D(0.367934, 0, 0.595504, 0, 0.7, 0, -0.595504, 0, 0.367934, -1.77938, -0.0233703, -0.604199)
+[node name="HomeBase" parent="." instance=ExtResource("13_nc5ma")]
+transform = Transform3D(0.90266, 0, -0.430354, 0, 1, 0, 0.430354, 0, 0.90266, 43.9386, 0.86459, 15.3675)
 
-[node name="Item_Rifle_Pickup_" parent="." instance=ExtResource("10_btd1y")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.791737, 0.705004, -0.777463)
-
-[node name="Item_CrystalPistol_Pickup_" parent="." instance=ExtResource("8_qtajf")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.290719, 0.618491, -1.28304)
+[node name="Portal" parent="." instance=ExtResource("14_do77m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.5338, 0, 21.0159)
