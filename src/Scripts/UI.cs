@@ -53,6 +53,7 @@ public partial class UI : Node
 		healthIndicator = GetNode<TextureRect>("HealthIndicator");
 		orbOverlay = GetNode<TextureRect>("OrbOverlay");
         friendsLobbyListContainer = GetNode<VBoxContainer>("TitleScreen/Friends/FriendsLobbyList");
+		loadingScreen = GetNode<TextureRect>("LoadingScreen");
 	}
 
 	public void Init(Player player)
@@ -134,11 +135,17 @@ public partial class UI : Node
 		return crosshairPositionCenter;
 	}
 
+	//BAD SEPERATION OF CONCERN ZONE <<<<
 	public void ShowHitmarker()
 	{
 		lastTimeHitmarker = Time.GetTicksMsec();
 		hitMarker.Visible = true;
 	}
+    public void SetLoadingScreen(bool enabled)
+	{
+		loadingScreen.Visible = enabled;
+	}
+	/////////////////////////////////////
 
 	public void SetTitleScreenEnabled(bool Enabled)
 	{

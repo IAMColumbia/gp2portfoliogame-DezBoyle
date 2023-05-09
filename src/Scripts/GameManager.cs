@@ -60,9 +60,10 @@ public partial class GameManager : Node
 	}
 	public void LoadLevel(string path)
 	{
-		if(Level != null)
+		if(Level != null && Level.NativeInstance != IntPtr.Zero)
 		{
 			Level.QueueFree();
+			Level = null;
 		}
 		GD.Print("Loading Level from Path: " + path);
 		Level = GD.Load<PackedScene>(path).Instantiate<LevelManager>();
@@ -114,6 +115,7 @@ public partial class GameManager : Node
 	public override void _Process(double delta)
 	{
 		base._Process(delta);
+
 		//fullscreen toggle
 		if(Input.IsActionJustPressed("fullscreen"))
 		{

@@ -37,10 +37,10 @@ enabled = false
 enemyScene = ExtResource("7_2f5d1")
 
 [node name="Spawn_TopLeft" type="Node3D" parent="EnemySpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.3275, 27.2578, -83.6377)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.3275, 27.2578, -47.5271)
 
 [node name="Spawn_BottomRight" type="Node3D" parent="EnemySpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -89.4748, 5.81592, -75.3387)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -89.4748, 5.81592, -39.2281)
 
 [node name="FallTrigger" type="Area3D" parent="."]
 collision_mask = 2

@@ -49,8 +49,8 @@ public partial class EnemyMissle : Enemy
 	{
 		base._Process(delta);
 
-		if(target == null)
-		{ GD.Print("Missle target == null cringe error"); GetTarget(); return; }
+		if(target == null || target.NativeInstance == IntPtr.Zero)
+		{ GD.Print("Missle target == null"); GetTarget(); return; }
 
 		//LookAt(target.GlobalPosition);
 		//GlobalPosition = GlobalPosition.MoveToward(target.GlobalPosition, (float)delta * speed);

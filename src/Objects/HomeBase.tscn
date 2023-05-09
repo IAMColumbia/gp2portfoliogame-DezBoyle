@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bjdpvekxnips2"]
+[gd_scene load_steps=12 format=3 uid="uid://bjdpvekxnips2"]
 
 [ext_resource type="Script" path="res://Scripts/Island.cs" id="1_cudqn"]
 [ext_resource type="PackedScene" uid="uid://bimdgneeqmnim" path="res://Models/Island_M_Irregular_01.blend" id="1_pjj2p"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dychhd0w5efvh" path="res://Objects/Plant_VirginiaCreeper_01.tscn" id="5_btdec"]
 [ext_resource type="PackedScene" uid="uid://b3dpkju8c6jqa" path="res://Objects/Stump01.tscn" id="7_2po68"]
 [ext_resource type="PackedScene" uid="uid://dvneog3y33k3f" path="res://Objects/Log_Multi_01.tscn" id="8_cbsp5"]
+[ext_resource type="PackedScene" uid="uid://fpftn4pq6mjc" path="res://Models/Island_S_01.blend" id="10_fiok5"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_k43iy"]
 radius = 17.1388
@@ -126,6 +127,39 @@ transform = Transform3D(-0.55003, 0.108094, 0.82812, 0.0314118, 0.993564, -0.108
 [node name="Plant_VirginiaCreeper_01_8" parent="." instance=ExtResource("5_btdec")]
 transform = Transform3D(-0.960916, -0.0275893, -0.275465, -0.0204326, 0.999376, -0.0288174, 0.276088, -0.0220626, -0.960879, -5.09335, 0.813592, -4.85732)
 
+[node name="Plant_VirginiaCreeper_01_12" parent="." instance=ExtResource("5_btdec")]
+transform = Transform3D(-0.961269, 0.0211339, -0.274804, -0.00959945, 0.993884, 0.110013, 0.275448, 0.10839, -0.955186, -10.9579, 0.450382, -6.76475)
+
+[node name="Plant_VirginiaCreeper_01_13" parent="." instance=ExtResource("5_btdec")]
+transform = Transform3D(-0.950778, 0.106045, -0.291169, 0.0505094, 0.98009, 0.192021, 0.305734, 0.167862, -0.937203, -9.51732, 0.601971, -9.74327)
+
+[node name="Plant_VirginiaCreeper_01_14" parent="." instance=ExtResource("5_btdec")]
+transform = Transform3D(-0.964279, 0.0317316, -0.262987, -0.00907473, 0.98826, 0.152515, 0.264739, 0.149453, -0.952668, -18.2115, 0.531619, -6.97003)
+
+[node name="Plant_VirginiaCreeper_01_15" parent="." instance=ExtResource("5_btdec")]
+transform = Transform3D(-0.914848, 0.205632, -0.347521, 0.169872, 0.976752, 0.130768, 0.366331, 0.0605988, -0.928509, -12.3948, 2.65013, -1.03268)
+
+[node name="Plant_VirginiaCreeper_01_16" parent="." instance=ExtResource("5_btdec")]
+transform = Transform3D(0.716768, 0.0163789, -0.69712, 0.0565775, 0.995063, 0.0815511, 0.695015, -0.0978944, 0.712302, -12.1743, 2.54234, 0.971399)
+
+[node name="Plant_VirginiaCreeper_01_17" parent="." instance=ExtResource("5_btdec")]
+transform = Transform3D(-0.969186, 0.128056, -0.210435, 0.0393601, 0.923789, 0.380874, 0.24317, 0.360855, -0.900362, -1.29492, 0.900702, -15.1513)
+
+[node name="Plant_VirginiaCreeper_01_18" parent="." instance=ExtResource("5_btdec")]
+transform = Transform3D(0.597455, -0.0357251, -0.801106, -0.127138, 0.982152, -0.138616, 0.791761, 0.184668, 0.58225, -1.37466, 0.234462, -13.247)
+
+[node name="Plant_VirginiaCreeper_01_19" parent="." instance=ExtResource("5_btdec")]
+transform = Transform3D(0.310065, -0.150563, 0.938718, 0.0685748, 0.988351, 0.135874, -0.94824, 0.0222429, 0.316776, 6.84708, 2.50576, -9.01428)
+
+[node name="Plant_VirginiaCreeper_01_20" parent="." instance=ExtResource("5_btdec")]
+transform = Transform3D(-0.99091, 0.0928255, -0.09738, 0.0945476, 0.995434, -0.0132113, 0.0957076, -0.0222982, -0.99516, 5.16531, 2.33664, -10.1186)
+
+[node name="Plant_VirginiaCreeper_01_21" parent="." instance=ExtResource("5_btdec")]
+transform = Transform3D(0.232055, -0.1665, 0.958347, -0.102655, 0.975548, 0.194346, -0.967272, -0.143478, 0.209288, -10.8159, 5.30509, 7.91605)
+
+[node name="Plant_VirginiaCreeper_01_22" parent="." instance=ExtResource("5_btdec")]
+transform = Transform3D(-0.98168, 0.0723837, -0.176257, 0.106587, 0.975376, -0.193087, 0.15794, -0.208336, -0.965221, -12.577, 4.93304, 7.0015)
+
 [node name="Plant_VirginiaCreeper_01_9" parent="." instance=ExtResource("5_btdec")]
 transform = Transform3D(-0.903186, 0.172655, -0.392996, 0.153298, 0.984905, 0.0803875, 0.400943, 0.0123593, -0.916019, -2.27519, 0.813592, -3.80039)
 
@@ -134,3 +168,21 @@ transform = Transform3D(1.16734, 0.0728569, 0.625284, -0.0482767, 1.32383, -0.06
 
 [node name="Log_Multi_01_" parent="." instance=ExtResource("8_cbsp5")]
 transform = Transform3D(0.581087, 0, -0.813842, 0, 1, 0, 0.813842, 0, 0.581087, 6.51873, -0.23568, -5.80203)
+
+[node name="Island_S_01" parent="." instance=ExtResource("10_fiok5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.36374, 2.19918, -9.58029)
+
+[node name="Island_S_02" parent="." instance=ExtResource("10_fiok5")]
+transform = Transform3D(-0.903053, -0.0616332, 0.425084, 0.0460055, 0.97008, 0.238387, -0.427058, 0.234832, -0.873198, -0.677263, 0.504504, -14.4481)
+
+[node name="Island_S_03" parent="." instance=ExtResource("10_fiok5")]
+transform = Transform3D(-0.251512, 0, 0.967854, 0, 1, 0, -0.967854, 0, -0.251512, -10.5209, 0.356101, -8.0248)
+
+[node name="Island_S_06" parent="." instance=ExtResource("10_fiok5")]
+transform = Transform3D(-0.251512, 0, 0.967854, 0, 1, 0, -0.967854, 0, -0.251512, -18.093, 0.356101, -6.6819)
+
+[node name="Island_S_04" parent="." instance=ExtResource("10_fiok5")]
+transform = Transform3D(-0.981687, 0, -0.190501, 0, 1, 0, 0.190501, 0, -0.981687, -12.2852, 2.51521, -0.350308)
+
+[node name="Island_S_05" parent="." instance=ExtResource("10_fiok5")]
+transform = Transform3D(-0.975236, -0.146632, -0.165571, -0.0853568, 0.940163, -0.329859, 0.204032, -0.307558, -0.929397, -11.558, 4.80728, 6.76266)

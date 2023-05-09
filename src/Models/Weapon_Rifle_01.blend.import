@@ -33,6 +33,10 @@ _subresources={
 "Bark": {
 "use_external/enabled": true,
 "use_external/path": "res://Materials/bark_bare_decomposing_01.tres"
+},
+"Crystal": {
+"use_external/enabled": true,
+"use_external/path": "res://Materials/WhiteBlueGlow.tres"
 }
 }
 }

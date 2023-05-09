@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 public partial class LevelGenerator : Node3D
 {
@@ -66,12 +67,25 @@ public partial class LevelGenerator : Node3D
         {
             NewLevel();
         }
+
+        //weird solution - wait one frame (so UI shows)
+        if (loading >= 2)
+        {
+            Cleanup();
+            GenerateIslands(Utility.RandomRange(islandsMin, islandsMax), GlobalPosition, branches);
+            UI.instance.SetLoadingScreen(false);
+            loading = 0;
+        }
+        if(loading != 0)
+        { loading++; }
     }
 
+    private int loading;
     public void NewLevel()
     {
-        Cleanup();
-        GenerateIslands(Utility.RandomRange(islandsMin, islandsMax), GlobalPosition, branches);
+        loading = 1;
+        UI.instance.SetLoadingScreen(true);
+        //actual loading uccurs in void _Process()
     }
 
     //STEP 1.5

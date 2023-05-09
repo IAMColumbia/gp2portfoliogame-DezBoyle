@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bv7w4jbm1eje"]
+[gd_scene load_steps=15 format=3 uid="uid://bv7w4jbm1eje"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_5ub74"]
 [ext_resource type="PackedScene" uid="uid://cuimmqyyt3xcp" path="res://Scenes/Game.tscn" id="2_2nexj"]
@@ -13,7 +13,6 @@
 [ext_resource type="AudioStream" uid="uid://blhk6g6jx8skl" path="res://Audio/Music/flying through the trees.ogg" id="10_gu06n"]
 [ext_resource type="Texture2D" uid="uid://df1h0l61pwush" path="res://Textures/crosshair_hitmarker.png" id="10_jvxci"]
 [ext_resource type="Texture2D" uid="uid://ievdkikj0vxf" path="res://Textures/Conciousness.png" id="10_oj5tt"]
-[ext_resource type="Texture2D" uid="uid://ko80snd5k5cf" path="res://Textures/Skybox/Epic_BlueSunset_EquiRect_flat.png" id="12_4dluh"]
 [ext_resource type="Texture2D" uid="uid://bbuth773v6vcv" path="res://Textures/OrbOverlay.png" id="12_en46f"]
 
 [node name="MainScene" type="Node3D"]
@@ -169,13 +168,12 @@ offset_bottom = 40.0
 texture = ExtResource("8_bho1x")
 
 [node name="LoadingScreen" type="TextureRect" parent="UI"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("12_4dluh")
+texture = ExtResource("12_en46f")
 expand_mode = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/LoadingScreen"]
@@ -185,14 +183,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -241.0
+offset_left = -373.0
 offset_top = 10.0
-offset_right = 249.0
+offset_right = 399.0
 offset_bottom = 104.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 64
-text = "Loading Level..."
+bbcode_enabled = true
+text = "[center]Generating Level...[/center]"
 
 [node name="Audio" type="Node" parent="."]
 script = ExtResource("9_3b33e")
@@ -203,7 +202,7 @@ music = ExtResource("10_gu06n")
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_font_sizes/font_size = 12
-text = "Ecto Prototype May.2.2023"
+text = "Ecto Prototype May.9.2023"
 
 [connection signal="button_down" from="UI/TitleScreen/MenuButtons/VBoxContainer/StartGameButton" to="UI" method="_on_start_game_button_button_down"]
 [connection signal="button_down" from="UI/TitleScreen/MenuButtons/VBoxContainer/SingleplayerButton" to="UI" method="_on_singleplayer_button_button_down"]

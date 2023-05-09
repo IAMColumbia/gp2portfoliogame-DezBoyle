@@ -30,9 +30,6 @@ public partial class LevelManager : Node
 
 	public LevelManager()
 	{
-		if(instance != null)
-		{ QueueFree(); return; }
-
 		instance = this;
 	}
 
@@ -81,8 +78,6 @@ public partial class LevelManager : Node
         state = State.Explore;
 		level.RemoveChild(portal);
 		enemySpawner.End();
-		//then generate a new level
-		// level.GlobalPosition = levelStartPos; //Temporary
 		levelGenerator.NewLevel();
 	}
 
